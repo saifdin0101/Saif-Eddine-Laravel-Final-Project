@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.index')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Settings</title>
+@section('content')
 
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-50 py-12 px-4">
+    
+<div class=" py-12 px-4 mt-[50px]">
 
     <form  action="{{ route('body.store') }}" method="post" class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl">
         @csrf
         <h2 class="text-3xl font-semibold text-gray-800 mb-8">Set Your Profile Information</h2>
         <div class="mb-8">
             <label for="height" class="block text-sm font-medium text-gray-700">Height (cm)</label>
-            <input type="range"  name="height" min="140" max="210" value="170"
+            <input type="range" id="height"  name="height" min="140" max="210" value="170"
                 class="w-full h-2 bg-[#00e0d4] rounded-lg appearance-none cursor-pointer mt-2">
             <div class="flex justify-between text-sm mt-2">
                 <span class="text-gray-600">140 cm</span>
@@ -28,7 +22,7 @@
 
         <div class="mb-8">
             <label for="weight" class="block text-sm font-medium text-gray-700">Weight (kg)</label>
-            <input type="range" name="weight" min="40" max="200" value="70"
+            <input type="range" id="weight" name="weight" min="40" max="200" value="70"
                 class="w-full h-2 bg-[#00e0d4] rounded-lg appearance-none cursor-pointer mt-2">
             <div class="flex justify-between text-sm mt-2">
                 <span class="text-gray-600">40 kg</span>
@@ -75,6 +69,6 @@
             weightDisplay.textContent = `${weightSlider.value} kg`;
         });
     </script>
-</body>
-
-</html>
+</div>
+    
+@endsection

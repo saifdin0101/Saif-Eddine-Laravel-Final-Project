@@ -17,7 +17,7 @@
     <title>Document</title>
 
 </head>
-<body>
+<body class="bg-[#1e1e1e]">
     
 
     @yield('content')
@@ -27,9 +27,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
   AOS.init({
-    duration: 1000, // Animation duration
-    easing: 'ease', // Animation easing
-    once: true, // Animation happens only once when element is visible
+    duration: 1000,
+    easing: 'ease',
+    once: true,
   });
 });
 

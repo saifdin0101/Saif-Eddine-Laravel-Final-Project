@@ -17,7 +17,7 @@
                 required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <input role="client" value="client" type="hidden">
+        <input  name="role" value="client" type="hidden">
         <div class="mt-4">
             <x-input-label for="image" :value="__('image')" />
 
