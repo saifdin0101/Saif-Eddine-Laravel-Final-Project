@@ -136,15 +136,15 @@
 
 
     </div>
-    <div class="h-[80vh] flex justify-center items-center">
+    <div  class="h-[80vh] flex justify-center items-center">
         <div class="w-full relative h-[70%] img5"></div>
         <div class="flex flex-col gap-10 absolute">
             <div data-aos-once="false" data-aos-delay="200" data-aos="fade-left" class="font-thin text-5xl text-white">Join Us Now</div>
             <button data-aos-once="false" data-aos-delay="300" data-aos="fade-right" class="btn">Sign Up</button>
         </div>
     </div>
-
-    <div class="flex flex-wrap justify-center gap-8 p-10 bg-gradient-to-br  max-h-[60rem]">
+<div id="plans" class="h-[10rem]"></div>
+    <div   class="flex flex-wrap justify-center gap-8 p-10 bg-gradient-to-br  max-h-[60rem]">
 
         <div data-aos-once="false" data-aos-delay="200" data-aos="fade-down"
             class="relative group h-[30rem] bg-white rounded-xl shadow-2xl w-[25rem] overflow-hidden transform transition hover:scale-105">
