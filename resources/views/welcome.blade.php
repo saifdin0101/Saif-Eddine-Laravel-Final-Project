@@ -6,7 +6,10 @@
         <div class="w-full h-[150px]  flex justify-center items-center">
             <nav id="navbar"
                 class=" text-white border-2 border-white   hover:duration-200  h-[65px] w-[70%] rounded-xl flex justify-around items-center">
-                <a href="">News</a>
+                <div class="flex gap-10">
+                    <a href="#news">News</a>
+                    <a href="#contact">Contact</a>
+                </div>
                 <a class="spacee gradiant text-2xl text-white" href="/">WorkOut-Now</a>
 
                 <div>
@@ -44,16 +47,15 @@
                         <p data-aos-once="false" data-aos-delay="500" data-aos="fade-right" class="text-3xl   cursor-default ">Train Hard, Stay Strong, Never Quit</p>
                     </div>
                     <div class="flex gap-5">
-                        <button class=" font-semibold text-xl btn  w-[14rem] h-[3.5rem] border-black border-2">Read
-                            More</button>
-                        <button class=" font-semibold text-xl btn  w-[14rem] h-[3.5rem] border-black border-2">Check The
-                            News</button>
+                        <a href="#plans" class=" font-semibold flex justify-center items-center text-xl btn  w-[14rem] h-[3.5rem] border-black border-2">View Our Plans</a>
+                        <a href="#news" class=" font-semibold flex justify-center items-center text-xl btn  w-[14rem] h-[3.5rem] border-black border-2">Check The
+                            News</a>
                     </div>
                 </div>
-                <div data-aos-once="false" data-aos-delay="200" data-aos="fade-down"
+                <a href="#news"  data-aos-once="false" data-aos-delay="200" data-aos="fade-down"
                     class="absolute bottom-[1.2rem] cursor-pointer px-[25px] bg-[#00e0d4] hover:duration-200 hover:bg-black hover:text-white rounded-full p-5  text-3xl text-black">
                     <i class="bi bi-chevron-down"></i>
-                </div>
+                </a>
             </div>
 
 
@@ -82,7 +84,7 @@
             });
         </script>
     </div>
-    <div class="h-[110vh]  w-full flex justify-center items-center">
+    <div id="news" class="h-[110vh]  w-full flex justify-center items-center">
         <div class=" flex flex-col gap-5 h-[100vh] w-[80%]">
             <div class="h-[40%]  flex gap-5">
                 <div class=" h-full  w-[20rem]">
@@ -113,11 +115,11 @@
                 </div>
             </div>
             <div class="h-[60%]  flex gap-[2.1rem]  relative ">
-                <div data-aos-once="false" data-aos-delay="800" data-aos="fade-up" class="w-[660px]  h-full overflow-hidden">
+                <div data-aos-once="false" data-aos-delay="600" data-aos="fade-up" class="w-[660px]  h-full overflow-hidden">
                     <div class="w-full relative h-full object-cover img3 transition-transform duration-500 hover:scale-110"></div>
                     <div class="absolute bottom-5 left-5 uppercase font-bold text-3xl text-[#ffffff] ">Outdoor areas for training <br> and relaxation</div>
                 </div>
-                <div data-aos-once="false" data-aos-delay="900" data-aos="fade-up" class=" h-[50%] w-[29.5rem] absolute bottom-0 right-0  flex  shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)] ">
+                <div data-aos-once="false" data-aos-delay="700" data-aos="fade-up" class=" h-[50%] w-[29.5rem] absolute bottom-0 right-0  flex  shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)] ">
                     <div class="h-full w-[50%]  flex flex-col gap-3 ">
                         <div class=" font-bold text-[#00e0d4] uppercase pl-5 mt-5">Couch of the week</div>
                         <div class="ml-5  uppercase font-bold text-xl text-black">Inspiring dedication and passion daily</div>

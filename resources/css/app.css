@@ -186,6 +186,9 @@
   .button:active::before {
     scale: 0.7;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   
   .img1{
     background-image: url('../imageBG/img1.jpg');
