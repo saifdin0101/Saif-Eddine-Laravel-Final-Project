@@ -187,6 +187,40 @@
     scale: 0.7;
   }
   
+  .img1{
+    background-image: url('../imageBG/img1.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
   
-
+  .img2{
+    background-image: url('../imageBG/boxing2.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  
+  .img3{
+    background-image: url('../imageBG/outside3.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  
+  .img4{
+    background-image: url('../imageBG/couch.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  
+  .img5{
+    background-image: url('../imageBG/caros.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  
+  
   
