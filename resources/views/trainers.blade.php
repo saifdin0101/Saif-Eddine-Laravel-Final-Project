@@ -19,7 +19,7 @@
 
                             <input type="text" placeholder="Search..."
                                 class="search-bar p-3 outline-none  font-lg text-white text-lg placeholder-gray-400 rounded-full w-[40rem]  transition-all duration-300 ease-in-out">
-                                @if (Auth::user()->role == 'client' || Auth::user()->role == 'admin')
+                            @if (Auth::user()->role == 'client' || Auth::user()->role == 'admin')
                                 <button
                                     class="px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full">
                                     Search
@@ -27,16 +27,18 @@
                                 <button onclick="openModal('modelConfirm')"
                                     class="relative px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full">
                                     {{ Auth::user()->approve ? 'Complete Your Payment' : 'Apply to Become a Trainer' }}
-                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Take the next step in your fitness journey!</div>
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Take the
+                                        next step in your fitness journey!</div>
                                 </button>
                             @else
                                 <button disabled
                                     class="relative px-10 py-3 search-bar bg-gray-500  font-semibold text-white rounded-full">
                                     Welcome, Trainer {{ Auth::user()->name }}
-                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">You have full access as a trainer !</div>
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">You have
+                                        full access as a trainer !</div>
                                 </button>
                             @endif
-                            
+
 
 
 
@@ -48,7 +50,7 @@
                         <div class=" w-full">
                             <div class=" w-full h-[600px] flex justify-center items-center">
 
-                                <div class="h-[90%] w-[90%] flex justify-center items-center flex-wrap gap-5">
+                                <div class="h-[90%] w-[90%] flex justify-center items-center flex-wrap gap-5 overflow-y-scroll">
                                     @forelse ($trainers as $trainer)
                                         <div
                                             class="relative h-[16rem] cartshadow w-[14rem] bg-white rounded-xl shadow-lg overflow-hidden group">
@@ -75,13 +77,13 @@
                                                 <p class="text-xs text-gray-500">Certified Trainer</p>
                                             </div>
 
-                                            <!-- Hover Button -->
+                                           
                                             <button
                                                 class="absolute bottom-0 w-full bg-[#40f9ff] text-white py-2 text-center font-semibold transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                                                 View Profile
                                             </button>
 
-                                            <!-- Arrows Effect -->
+                                           
                                             <div
                                                 class="absolute bottom-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                                 <svg class="w-4 h-4 text-[#40f9ff] group-hover:translate-x-1 transition-transform duration-300"

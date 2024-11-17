@@ -2,6 +2,8 @@
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\BodyMiddleware;
+use App\Http\Middleware\CheckOutMiddleware;
+use App\Http\Middleware\SeenBodyMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,7 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'BodyInformation' => BodyMiddleware::class ,
             'admin' => AdminMiddleware::class ,
-            'OneInALifeTime' => AdminMiddleware::class ,
+            'OneInALifeTime' => SeenBodyMiddleware::class ,
+            'CheckOut' => CheckOutMiddleware::class ,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

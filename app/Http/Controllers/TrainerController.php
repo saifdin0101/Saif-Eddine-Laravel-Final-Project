@@ -17,7 +17,7 @@ class TrainerController extends Controller
     public function index()
     {
         //
-        
+
         $trainers = User::where('role', 'trainer')->get();
 
         return view('trainers', compact('trainers'));
@@ -81,7 +81,8 @@ class TrainerController extends Controller
     public function store(Request $request)
     {
         //
-
+        // $user = auth()->user();
+        // dd($user->approve);
         request()->validate([
             'why' => 'required',
             'experience' => 'required',

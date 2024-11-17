@@ -17,11 +17,11 @@ class SeenBodyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         // Check if body information exists for the user
-        if (Body::where('user_id', $user->id)->exists()) {
-            // Redirect to another page if body info exists
+        if ($user && Body::where('user_id', $user->id)->exists()) {
+           
             return redirect('/dashboard')->with('info', 'You have already completed your body information.');
         }
 

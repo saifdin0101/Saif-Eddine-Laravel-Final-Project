@@ -251,8 +251,24 @@ color: #05a59d;
 }
 .cartshadow{
   box-shadow: 13px 14px 14px -14px rgba(64,249,255,1);
-
-
-
-
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #000000, #004040, #00e0d4);
+  box-shadow: 0 0 10px #00e0d4; /* Subtle glow effect */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00e0d4, #008080, #002222);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #40f9ff, #008888);
+  box-shadow: 0 0 8px #40f9ff; 
+}
+scrollbar-width: thin;
+scrollbar-color: #00e0d4 #002222; 
