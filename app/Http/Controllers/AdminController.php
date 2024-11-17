@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,11 @@ class AdminController extends Controller
     public function index()
     {
         //
+        $approveTrainerRequests = Trainer::all();
         $deletedUsers = User::onlyTrashed()->get();
 
         $users = User::where('role', '!=', 'admin')->get();
-        return view('admin.admin', compact('users', 'deletedUsers'));
+        return view('admin.admin', compact('users', 'deletedUsers','approveTrainerRequests'));
     }
     public function restore($id)
     {

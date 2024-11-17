@@ -20,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'approve',
         'image',
         'role',
         'email',
@@ -47,5 +48,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function trainers (){
+        return $this->hasMany(Trainer::class);
     }
 }

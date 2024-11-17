@@ -24,6 +24,7 @@ Route::middleware('auth', 'BodyInformation')->group(function () {
         Route::post('/user/{id}/restore', [AdminController::class, 'restore'])->name('user.restore');
         Route::put('/admin/update/{user}', [AdminController::class, 'update'])->name('admin.update');
     });
+    
 });
 Route::middleware('auth')->group(function () {
     Route::resource('body', BodyController::class);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('role');
             $table->string('email')->unique();
+            $table->boolean('approve')->default('false');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->softDeletes();
