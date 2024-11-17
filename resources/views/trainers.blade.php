@@ -19,15 +19,30 @@
 
                             <input type="text" placeholder="Search..."
                                 class="search-bar p-3 outline-none  font-lg text-white text-lg placeholder-gray-400 rounded-full w-[40rem]  transition-all duration-300 ease-in-out">
-                            <button
-                                class=" px-10 py-3 search-bar hover:bg-[#40f9ff]  hover:duration-500 hover:text-black font-semibold  text-white rounded-full">Search</button>
-                            <button onclick="openModal('modelConfirm')"
-                                class=" relative px-10 py-3 search-bar hover:bg-[#40f9ff]  hover:duration-500 hover:text-black font-semibold  text-white rounded-full">
-                                Ask to be a Trainer
-                                <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Wanna Be A
-                                    Trainer
-                                    ?</div>
-                            </button>
+                                @if (Auth::user()->role == 'client' || Auth::user()->role == 'admin')
+                                <button
+                                    class="px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full">
+                                    Search
+                                </button>
+                                <button onclick="openModal('modelConfirm')"
+                                    class="relative px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full">
+                                    {{ Auth::user()->approve ? 'Complete Your Payment' : 'Apply to Become a Trainer' }}
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Take the next step in your fitness journey!</div>
+                                </button>
+                            @else
+                                <button disabled
+                                    class="relative px-10 py-3 search-bar bg-gray-500  font-semibold text-white rounded-full">
+                                    Welcome, Trainer {{ Auth::user()->name }}
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">You have full access as a trainer !</div>
+                                </button>
+                            @endif
+                            
+
+
+
+
+
+
 
                         </div>
                         <div class=" w-full">
@@ -123,10 +138,10 @@
 
                                                         <form method="post" action="{{ route('trainer.checkout') }}">
                                                             @csrf
-                                                            <button 
-                                                            class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
-                                                            Proceed to Checkout
-                                                        </button>
+                                                            <button
+                                                                class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                                                Proceed to Checkout
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </div>

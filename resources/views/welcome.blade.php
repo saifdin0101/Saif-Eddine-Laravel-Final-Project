@@ -138,9 +138,9 @@
     </div>
     <div  class="h-[80vh] flex justify-center items-center">
         <div class="w-full relative h-[70%] img5"></div>
-        <div class="flex flex-col gap-10 absolute">
-            <div data-aos-once="false" data-aos-delay="200" data-aos="fade-left" class="font-thin text-5xl text-white">Join Us Now</div>
-            <button data-aos-once="false" data-aos-delay="300" data-aos="fade-right" class="btn">Sign Up</button>
+        <div class="flex flex-col gap-10 absolute justify-center items-center">
+            <div data-aos-once="false" data-aos-delay="200" data-aos="fade-left" class="font-thin text-5xl text-white">Check Our New Trainers</div>
+            <a data-aos-once="false" data-aos-delay="300" data-aos="fade-right"   href="{{ route('login') }}" class="btn flex justify-center items-center w-[15rem]">Sign Up</a>
         </div>
     </div>
 <div id="plans" class="h-[10rem]"></div>

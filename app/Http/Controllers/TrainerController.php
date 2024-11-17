@@ -17,7 +17,7 @@ class TrainerController extends Controller
     public function index()
     {
         //
-
+        
         $trainers = User::where('role', 'trainer')->get();
 
         return view('trainers', compact('trainers'));
