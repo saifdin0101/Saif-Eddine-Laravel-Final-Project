@@ -17,15 +17,14 @@ class BodyMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+{
+    $user = auth()->user(); // Directly fetch authenticated user
 
-        $user  = User::where("id", auth()->user()->id)->first();
-
-
-        if ($user && Body::where('user_id', $user->id || $user->role == "admin")) {
-            return $next($request);
-        }
-        return redirect()->route('body.index')->with("error", 'You Need To Finish Your Information First :)');
+    if ($user && (Body::where('user_id', $user->id)->exists() || $user->role == "admin")) {
+        return $next($request);
     }
+
+    return redirect()->route('body.index')->with('error', 'You Need To Finish Your Information First :)');
+}
 }
 

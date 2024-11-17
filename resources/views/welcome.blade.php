@@ -95,7 +95,7 @@
                             </div>
 
                         </div>
-                        <div  class="h-[13.5rem] flex justify-center  flex-col gap-10">
+                        <div  class="h-[13.5rem] bg-white flex justify-center  flex-col gap-10">
                             <div class="ml-10 font-bold text-[#00e0d4] uppercase">our facilities</div>
                             <div class="ml-10 font-bold text-xl text-black uppercase">Modern equipment, spacious studios, personal training, and luxurious amenities.</div>
                         </div>
@@ -106,7 +106,7 @@
                         <div class="w-full min-h-full object-cover img2 transition-transform duration-500 hover:scale-110">
                         </div>
                     </div>
-                    <div class="flex justify-center w-[50%]  flex-col gap-10">
+                    <div class="flex justify-center w-[50%] bg-white  flex-col gap-10">
                         <div class="ml-5 font-bold text-[#00e0d4] uppercase">Boxing</div>
                         <div class="ml-5 uppercase font-bold text-xl text-black">New boxing machines available for intense workouts.</div>
                         <div class="text-sm ml-5 text-[#585b63]">New Boxing Machines Available For Intense, Efficient Workouts. Improve Strength And Endurance With Advanced Equipment.</div>
@@ -120,8 +120,8 @@
                     <div class="absolute bottom-5 left-5 uppercase font-bold text-3xl text-[#ffffff] ">Outdoor areas for training <br> and relaxation</div>
                 </div>
                 <div data-aos-once="false" data-aos-delay="700" data-aos="fade-up" class=" h-[50%] w-[29.5rem] absolute bottom-0 right-0  flex  shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)] ">
-                    <div class="h-full w-[50%]  flex flex-col gap-3 ">
-                        <div class=" font-bold text-[#00e0d4] uppercase pl-5 mt-5">Couch of the week</div>
+                    <div class="h-full w-[50%]  flex flex-col gap-3 bg-white ">
+                        <div class=" font-bold text-[#00e0d4] uppercase pl-5 mt-5 ">Couch of the week</div>
                         <div class="ml-5  uppercase font-bold text-xl text-black">Inspiring dedication and passion daily</div>
                         <div class="ml-5 text-sm  text-[#585b63]">Meet Our Coach Of The Week, Leading With Expertise, Passion, And Commitment To Fitness.</div>
                     </div>

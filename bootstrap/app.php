@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'BodyInformation' => BodyMiddleware::class ,
             'admin' => AdminMiddleware::class ,
+            'OneInALifeTime' => AdminMiddleware::class ,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

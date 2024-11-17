@@ -3,11 +3,12 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BodyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,6 +25,8 @@ Route::middleware('auth', 'BodyInformation')->group(function () {
         Route::put('/admin/update/{user}', [AdminController::class, 'update'])->name('admin.update');
     });
 });
-Route::resource('body', BodyController::class)->middleware('auth');
-
+Route::middleware('auth')->group(function () {
+    Route::resource('body', BodyController::class);
+    Route::resource('trainer', TrainerController::class);
+});
 require __DIR__ . '/auth.php';
