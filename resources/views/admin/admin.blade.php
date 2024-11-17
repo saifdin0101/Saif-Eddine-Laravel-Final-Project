@@ -126,6 +126,7 @@
                             <th class="px-4 py-2">Why They Want to Be a Trainer</th>
                             <th class="px-4 py-2">Years of Experience</th>
                             <th class="px-4 py-2">Background</th>
+                            <th class="px-4 py-2">Payment</th>
                             <th class="px-4 py-2">Role</th>
                             <th class="px-4 py-2">Action</th>
                         </tr>
@@ -140,31 +141,32 @@
                                 <td class="px-4 py-2">
                                     <span
                                         class="inline-block py-1 px-3 rounded-full
-                                            {{ $request->user->role == 'trainer' ? 'bg-purple-500 text-white' : 'bg-gray-100 text-black' }}">
+                                        {{ $request->payment ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">
+                                        {{ $request->payment ? 'Payment Received' : 'No Payment' }}
+                                    </span>
+                                </td>
+                                <td class="px-4 py-2">
+                                    <span
+                                        class="inline-block py-1 px-3 rounded-full
+                                        {{ $request->user->role == 'trainer' ? 'bg-purple-500 text-white' : 'bg-gray-100 text-black' }}">
                                         {{ ucfirst($request->user->role) }}
                                     </span>
                                 </td>
                                 <td class="px-4 py-2 flex items-center space-x-2">
-                                    <form method="POST" action="/admin/accept-trainer/{{ $request->id }}">
-                                        @csrf
-                                        <button
-                                            class="bg-green-500 text-white py-2 px-4 rounded-full hover:bg-teal-400 transition duration-300">
-                                            Accept Request
-                                        </button>
-                                    </form>
-
-                                    <form method="POST" action="/admin/update/{{ $user->id }}">
+                                    <form method="POST" action="/admin/update/{{ $request->user->id }}">
                                         @csrf
                                         @method('PUT')
                                         <button
                                             class="bg-[#00e0d4] text-white py-2 px-4 rounded-full hover:bg-teal-400 transition duration-300">
-                                            {{ $user->role == 'client' ? ' Give Role' : 'Remove Role' }}
+                                            {{ $request->user->role == 'client' ? 'Accept Request' : 'Remove Role' }}
                                         </button>
                                     </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
+                </table>
+
                 </table>
             </div>
 

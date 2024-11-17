@@ -115,14 +115,19 @@
 
                                                 <!-- Page 2 (Hidden) -->
                                                 <div id="page-2">
-                                                    <div 
-                                                        class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8">
-                                                        <h2 class="text-3xl font-bold text-white text-center">Payment Page</h2>
+                                                    <div
+                                                        class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8 flex flex-col gap-10">
+                                                        <h2 class="text-3xl font-bold text-white text-center">Payment Page
+                                                        </h2>
 
-                                                      
-                                                        <button type="submit" class=" " onclick="closeModal('modelConfirm')">
-                                                            Send approve 
+
+                                                        <form method="post" action="{{ route('trainer.checkout') }}">
+                                                            @csrf
+                                                            <button 
+                                                            class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                                            Proceed to Checkout
                                                         </button>
+                                                        </form>
                                                     </div>
                                                 </div>
 
@@ -166,7 +171,7 @@
                                                 <input name="user_id" value="{{ Auth::user()->id }}" type="hidden" />
 
                                                 <!-- Submit Button -->
-                                                <button type="submit" 
+                                                <button type="submit"
                                                     class="w-full bg-[#00ddd1] text-white py-2 px-6 rounded-md hover:bg-[#00c0b2] focus:ring-4 focus:ring-[#00ddd1] transition-all duration-300 ease-in-out text-lg font-semibold">
                                                     Submit Application
                                                 </button>

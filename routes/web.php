@@ -29,5 +29,8 @@ Route::middleware('auth', 'BodyInformation')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('body', BodyController::class);
     Route::resource('trainer', TrainerController::class);
+    Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout');
+    Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success');
+
 });
 require __DIR__ . '/auth.php';
