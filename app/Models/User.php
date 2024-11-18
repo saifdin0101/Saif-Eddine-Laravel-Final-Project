@@ -55,4 +55,7 @@ class User extends Authenticatable
     public function sesins () {
         return $this->hasMany(Sesin::class);
     }
+    public function exerciceSesins () {
+        return $this->belongsToMany(Sesin::class,'Joins');
+    }
 }

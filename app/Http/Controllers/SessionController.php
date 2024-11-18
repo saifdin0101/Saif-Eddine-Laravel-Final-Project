@@ -86,4 +86,20 @@ class SessionController extends Controller
     {
         //
     }
+    public function joinSession(Request $request, Sesin $session)
+    {
+        
+        $user = $request->user(); 
+        
+     
+        if ($user->exerciceSesins->contains($session->id)) {
+            return redirect()->back()->with('error', 'You are already part of this session.');
+        }
+        
+   
+        $user->exerciceSesins()->attach($session->id);
+
+        return redirect()->back()->with('success', 'You have successfully joined the session!');
+    }
+
 }

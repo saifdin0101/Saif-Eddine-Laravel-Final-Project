@@ -20,7 +20,9 @@
                             <img class="h-full w-full hover:scale-105 transition-transform duration-700 rounded-2xl"
                                 src="{{ asset('storage/images/' . $session->image) }}" alt="">
                             <div class="flex gap-5 absolute top-5 left-5">
-                                <div class="h-[50px] w-[50px] rounded-full bg-blue-50"></div>
+                                <div class="h-[50px] w-[50px] rounded-full border-2 border-white "><img
+                                        class="h-full w-full rounded-full"
+                                        src="{{ asset('storage/images/' . $session->user->image) }}" alt=""></div>
                                 <div
                                     class="relative z-10 p-4  backdrop-blur-md rounded-full shadow-lg text-white font-thin">
                                     Check Profile And see Other Sessions</div>
@@ -33,25 +35,43 @@
 
                                     <div class="absolute bottom-2 right-2">
                                         <div class="text-xs font-semibold">Starting at:</div>
-                                        <div>{{ $session->start_time }}</div>
+                                        <div class="text-sm font-semibold">{{ $session->start_time }}</div>
                                     </div>
                                 </div>
                                 <div class="img6 text-white relative rounded-lg img6 h-[6rem] w-[14rem]">
 
                                     <div class="absolute bottom-2 right-2">
                                         <div class="text-xs font-semibold">Ending at:</div>
-                                        <div>{{ $session->end_time }}</div>
+                                        <div class="text-sm font-semibold">{{ $session->end_time }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex flex-col gap-10 absolute bottom-10 left-5">
                                 <h1 class="text-3xl font-bold  text-white">{{ $session->name }}</h1>
-                                <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-5  hover:text-[#40f9ff] hover:duration-200 bg-white/30 backdrop-blur-md text-white  shadow-md"
-                                    href="">
-                                    Join Us Now <div
-                                        class="bg-white rounded-full px-1 text-black flex justify-center items-center"><i
-                                            class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i></div>
-                                </a>
+                                @if (Auth::user()->exerciceSesins->contains($session->id))
+                                    <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5  hover:text-[#40f9ff] hover:duration-200 bg-white/30 backdrop-blur-md text-white  shadow-md"
+                                        href="">
+                                        CheckOut Our Exercices<div
+                                            class="bg-white rounded-full  px-1 text-black flex justify-center items-center">
+                                            <i class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
+                                        </div>
+                                    </a>
+                                @else
+                                    <form action="{{ route('session.join', $session->id) }}">
+                                        @csrf
+                                        {{-- <input name="user_id" type="hidden">
+                                    <input name="sesin_id" type="hidden"> --}}
+                                        <button
+                                            class="flex text-sm hover:bg-black duration-200 justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-5  hover:text-[#40f9ff] hover:duration-200 bg-white/30 backdrop-blur-md text-white  shadow-md"
+                                            href="">
+                                            Join Us Now <div
+                                                class="bg-white rounded-full px-1 text-black flex justify-center items-center">
+                                                <i class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
+                                            </div>
+                                        </button>
+                                    </form>
+                                @endif
+
                             </div>
 
 

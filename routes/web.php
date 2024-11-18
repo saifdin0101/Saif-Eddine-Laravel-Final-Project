@@ -33,5 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout')->middleware('CheckOut');
     Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');
     Route::resource('session', SessionController::class);
+    Route::get('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
+
 });
 require __DIR__ . '/auth.php';
