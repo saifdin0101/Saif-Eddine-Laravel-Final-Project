@@ -1,16 +1,16 @@
 @extends('layouts.index')
 
 @section('content')
+<div class="py-12 px-4 mt-[50px]">
 
-    
-<div class=" py-12 px-4 mt-[50px]">
-
-    <form  action="{{ route('body.store') }}" method="post" class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl">
+    <form action="{{ route('body.store') }}" method="post" class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl">
         @csrf
         <h2 class="text-3xl font-semibold text-gray-800 mb-8">Set Your Profile Information</h2>
+        
+        <!-- Height Input -->
         <div class="mb-8">
             <label for="height" class="block text-sm font-medium text-gray-700">Height (cm)</label>
-            <input type="range" id="height"  name="height" min="140" max="210" value="170"
+            <input type="range" id="height" name="height" min="140" max="210" value="170"
                 class="w-full h-2 bg-[#00e0d4] rounded-lg appearance-none cursor-pointer mt-2">
             <div class="flex justify-between text-sm mt-2">
                 <span class="text-gray-600">140 cm</span>
@@ -19,7 +19,7 @@
             <div class="text-2xl font-bold mt-2 text-center" id="height-display">170 cm</div>
         </div>
 
-
+        <!-- Weight Input -->
         <div class="mb-8">
             <label for="weight" class="block text-sm font-medium text-gray-700">Weight (kg)</label>
             <input type="range" id="weight" name="weight" min="40" max="200" value="70"
@@ -31,11 +31,24 @@
             <div class="text-2xl font-bold mt-2 text-center" id="weight-display">70 kg</div>
         </div>
 
+        <!-- Calories Input -->
+        <div class="mb-8">
+            <label for="calories" class="block text-sm font-medium text-gray-700">Daily Calorie Intake (kcal)</label>
+            <input type="range" id="calories" name="calories" min="1500" max="3500" value="2500"
+                class="w-full h-2 bg-[#00e0d4] rounded-lg appearance-none cursor-pointer mt-2">
+            <div class="flex justify-between text-sm mt-2">
+                <span class="text-gray-600">1500 kcal</span>
+                <span class="text-gray-600">3500 kcal</span>
+            </div>
+            <div class="text-2xl font-bold mt-2 text-center" id="calories-display">2500 kcal</div>
+        </div>
+
         <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+
+        <!-- Body Type Select -->
         <div class="mb-8">
             <label for="body-type" class="block text-sm font-medium text-gray-700">Body Type</label>
-            <select  name="bodytype"
-                class="w-full py-2 px-4 mt-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] transition duration-300">
+            <select name="bodytype" class="w-full py-2 px-4 mt-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] transition duration-300">
                 <option value="slim">Slim</option>
                 <option value="average">Average</option>
                 <option value="athletic">Athletic</option>
@@ -44,9 +57,9 @@
             </select>
         </div>
 
+        <!-- Save Button -->
         <div class="text-center">
-            <button
-                class="bg-[#00e0d4] text-white py-3 px-8 rounded-full hover:bg-teal-400 transition duration-300 transform hover:scale-105">
+            <button class="bg-[#00e0d4] text-white py-3 px-8 rounded-full hover:bg-teal-400 transition duration-300 transform hover:scale-105">
                 Save Profile
             </button>
         </div>
@@ -59,16 +72,24 @@
         const weightSlider = document.getElementById('weight');
         const weightDisplay = document.getElementById('weight-display');
 
+        const caloriesSlider = document.getElementById('calories');
+        const caloriesDisplay = document.getElementById('calories-display');
 
+        // Update height display
         heightSlider.addEventListener('input', function() {
             heightDisplay.textContent = `${heightSlider.value} cm`;
         });
 
-
+        // Update weight display
         weightSlider.addEventListener('input', function() {
             weightDisplay.textContent = `${weightSlider.value} kg`;
         });
+
+        // Update calories display
+        caloriesSlider.addEventListener('input', function() {
+            caloriesDisplay.textContent = `${caloriesSlider.value} kcal`;
+        });
     </script>
+
 </div>
-    
 @endsection

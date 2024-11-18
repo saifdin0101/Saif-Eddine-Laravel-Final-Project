@@ -36,7 +36,8 @@ class BodyController extends Controller
             'height'=>'required',
             'weight'=>'required',
             'user_id'=>'required',
-            'bodytype'=>'required'
+            'bodytype'=>'required',
+            'calories'=>'required'
 
         ]);
         
@@ -44,6 +45,7 @@ class BodyController extends Controller
             'height'=>$request->height,
             'weight'=>$request->weight,
             'user_id'=>$request->user_id,
+            'calories'=>$request->calories,
             'bodytype'=>$request->bodytype
         ]);
         return redirect()->route('dashboard');

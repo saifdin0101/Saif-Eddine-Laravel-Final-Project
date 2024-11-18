@@ -229,6 +229,11 @@
     background-size: cover; 
     background-repeat: no-repeat; 
   }
+  .img7{
+    background-image: url('../imageBG/parentimg.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+  }
 .smooths{
   transition: clip-path 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
@@ -242,7 +247,7 @@
 color: #05a59d;
 }
 .gradient-background {
-  background: radial-gradient(circle, rgba(2, 255, 239, 1) 0%, rgba(255, 255, 255, 1) 57%);
+  background: radial-gradient(circle, rgba(2, 255, 239, 1) 0%, rgb(80, 117, 122) 57%);
   color: transparent;
   background-clip: text;
   text-align: center;

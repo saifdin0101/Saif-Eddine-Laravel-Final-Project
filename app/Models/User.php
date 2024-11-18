@@ -62,5 +62,8 @@ class User extends Authenticatable
 {
     return $this->belongsToMany(Exercice::class, 'favorites');
 }
-
+public function DoneExercice()
+{
+    return $this->belongsToMany(Exercice::class, 'dones');
+}
 }

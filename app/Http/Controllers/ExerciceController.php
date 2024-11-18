@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Body;
+use App\Models\Done;
 use App\Models\Exercice;
 use Illuminate\Http\Request;
 
@@ -38,8 +40,10 @@ class ExerciceController extends Controller
             'sesin_id' => 'required',
             'calories' => 'required|numeric',
             'location' => 'required',
-            'premium' => 'nullable'
+            'premium' => 'nullable',
+            'user_id' => 'required'
         ]);
+
 
 
         $image = $request->image;
@@ -55,6 +59,7 @@ class ExerciceController extends Controller
             'premium' => $request->premium,
             'sesin_id' => $request->sesin_id,
             'image' => $imageName,
+            'user_id' => $request->user_id,
         ]);
 
         return back();
@@ -75,6 +80,40 @@ class ExerciceController extends Controller
 
         return back()->with('success', 'Exercice Added Succefully');
     }
+    public function done(Request $request)
+    {
+        $user = auth()->user();   
+        $exoID = $request->exercice_id;
+
+
+        if ($user->DoneExercice()->where('exercice_id', $exoID)->exists()) {
+            return back()->with('error', 'Exercise Already Done');
+        }
+
+
+        $userBody = Body::where('user_id', $user->id)->first();
+
+
+        $burnedCalories = Exercice::where('id', $exoID)->first();
+        
+
+
+        if ($userBody && $burnedCalories) {
+
+            $total = $userBody->calories - $burnedCalories->calories;
+
+
+            $userBody->update([
+                'calories' => $total,
+            ]);
+        }
+
+
+        $user->DoneExercice()->attach($exoID);
+
+        return back()->with('success', 'Exercice Added Successfully');
+    }
+
 
     /**
      * Display the specified resource.

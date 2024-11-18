@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('time');
             $table->string('premium')->nullable();
             $table->foreignId('sesin_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

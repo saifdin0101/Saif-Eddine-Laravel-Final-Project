@@ -231,7 +231,7 @@
 
 
 
-    <div class="w-full h-[60vh]  flex justify-center items-center flex-col gap-10">
+    <div id="contact" class="w-full h-[60vh]  flex justify-center items-center flex-col gap-10">
         <h1 class="text-4xl text-[#00e0d4]">Contact & Help</h1>
         <div class="flex  justify-center items-center flex-col gap-5 w-full h-[80%] ">
             <div class="flex gap-5">

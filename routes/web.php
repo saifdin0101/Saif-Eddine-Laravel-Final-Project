@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('exercice', ExerciceController::class);
     Route::post('/exercises/favorite', [ExerciceController::class, 'favorite'])->name('exercice.favorite');
     Route::post('/exercises/dettach', [ExerciceController::class, 'dettach'])->name('exercice.dettach');
+    Route::post('/exercises/done', [ExerciceController::class, 'done'])->name('exercice.done');
+
 
 
 

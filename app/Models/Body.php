@@ -8,6 +8,6 @@ class Body extends Model
 {
     //
     protected $fillable =[
- 'height','weight','user_id','bodytype'
+ 'height','weight','user_id','bodytype','calories'
     ];
 }

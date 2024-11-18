@@ -10,7 +10,7 @@
                 <div class="absolute right-10">
                     <button onclick="openModal('modelConfirm3')"
                         class="relative animate-float px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full transition-transform hover:scale-110 shadow-lg">
-                        Create Session
+                        Create Exersice
                         <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Create Exercice!</div>
                     </button>
                 </div>
@@ -92,9 +92,17 @@
                                         <span>{{ $exercice->location }}</span>
                                     </div>
                                 </div>
-                                <form class="absolute right-0 bottom-0 bg-[#00e0d4] rounded-tl-full pl-3 py-2 hover:bg-[#0c3331] duration-200 cursor-pointer" action="">
+                                @if (Auth::user()->DoneExercice->contains($exercice->id))
+                                    <div class="bg-black w-[25rem] h-[30rem] absolute top-[-15rem] right-[0rem] opacity-70 z-[999] flex justify-center items-center"><i class="bi bi-check2-all text-9xl"></i></div>
+                                @else
+                                <form method="POST" class="absolute right-0 bottom-0 bg-[#00e0d4] rounded-tl-full pl-3 py-2 hover:bg-[#0c3331] duration-200 cursor-pointer" action="{{ route('exercice.done') }}">
+                                    @csrf
+                                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                    <input name="exercice_id" value="{{ $exercice->id }}" type="hidden">
                                     <button>Mark Exercice Done</button>
                                 </form>
+                                @endif
+                                
 
                                 <!-- Calories -->
                                 <div class="text-lg font-semibold flex items-center space-x-2 text-red-500">
@@ -186,7 +194,7 @@
                             class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
                             required>
                     </div>
-
+                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
                     <input name="sesin_id" value="{{ $session->id }}" type="hidden">
                     <div>
                         <label for="location" class="block text-white font-medium mb-2">Exercise Location</label>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('height');
             $table->string('weight');
+            $table->string('calories');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('bodytype');
             $table->timestamps();

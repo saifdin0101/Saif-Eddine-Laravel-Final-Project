@@ -15,11 +15,16 @@ class Exercice extends Model
         'sesin_id',
         'calories',
         'location',
+        'user_id',
         'premium'
     ];
     public function UserFavorites()
 {
     return $this->belongsToMany(User::class, 'favorites');
+}
+public function UserDones()
+{
+    return $this->belongsToMany(User::class, 'dones');
 }
 
 }
