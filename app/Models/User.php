@@ -58,4 +58,9 @@ class User extends Authenticatable
     public function exerciceSesins () {
         return $this->belongsToMany(Sesin::class,'Joins');
     }
+    public function favoriteExercises()
+{
+    return $this->belongsToMany(Exercice::class, 'favorites');
+}
+
 }

@@ -37,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/session/show/{session}',[SessionController::class,'show'])->name('session.show')->middleware('Session');
     Route::post('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
     Route::resource('exercice', ExerciceController::class);
+    Route::post('/exercises/favorite', [ExerciceController::class, 'favorite'])->name('exercice.favorite');
+    Route::post('/exercises/dettach', [ExerciceController::class, 'dettach'])->name('exercice.dettach');
+
+
 
 });
 require __DIR__ . '/auth.php';

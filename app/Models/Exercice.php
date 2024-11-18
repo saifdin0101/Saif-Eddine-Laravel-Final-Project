@@ -17,4 +17,9 @@ class Exercice extends Model
         'location',
         'premium'
     ];
+    public function UserFavorites()
+{
+    return $this->belongsToMany(User::class, 'favorites');
+}
+
 }

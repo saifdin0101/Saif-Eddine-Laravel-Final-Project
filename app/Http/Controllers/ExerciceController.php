@@ -29,7 +29,7 @@ class ExerciceController extends Controller
     public function store(Request $request)
     {
         //
-        
+
         request()->validate([
             'name' => 'required',
             'image' => 'required |image',
@@ -40,24 +40,40 @@ class ExerciceController extends Controller
             'location' => 'required',
             'premium' => 'nullable'
         ]);
-       
+
 
         $image = $request->image;
         $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
         $image->move(storage_path('app/public/images'), $imageName);
-        
+
         Exercice::create([
             'name' => $request->name,
             'calories' => $request->calories,
             'descreption' => $request->descreption,
             'time' => $request->time,
             'location' => $request->location,
-            'premium' => $request->premium ,
-            'sesin_id'=>$request->sesin_id,
+            'premium' => $request->premium,
+            'sesin_id' => $request->sesin_id,
             'image' => $imageName,
         ]);
-      
+
         return back();
+    }
+
+    public function favorite(Request $request)
+    {
+        $user = auth()->user();
+        $exoID = $request->exercice_id;
+
+
+        if ($user->favoriteExercises()->where('exercice_id', $exoID)->exists()) {
+            return back()->with('error', 'Exercise Already In Favorite');
+        }
+
+
+        $user->favoriteExercises()->attach($exoID);
+
+        return back()->with('success', 'Exercice Added Succefully');
     }
 
     /**
@@ -91,5 +107,19 @@ class ExerciceController extends Controller
     public function destroy(Exercice $exercice)
     {
         //
+
+
+    }
+    public function dettach(Request $request)
+    {
+        //
+        $user = auth()->user();
+        $exoID = $request->exercise_id;
+
+
+        if ($user->favoriteExercises()->where('exercice_id', $exoID)->where('user_id', $user->id)->exists()) {
+            $user->favoriteExercises()->detach($exoID);
+        }
+        return back()->with('success', 'Ecercice Been Removed From Favorite');
     }
 }
