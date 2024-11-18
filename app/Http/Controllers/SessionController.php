@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercice;
 use App\Models\Sesin;
 use Illuminate\Http\Request;
 
@@ -57,15 +58,17 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sesin $Sesin)
+    public function show(Sesin $session)
     {
         //
+        $exercices = Exercice::all();
+        return view('trainer.partials.exerciceShow',compact('session','exercices'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sesin $Sesin)
+    public function edit(Sesin $session)
     {
         //
     }
@@ -73,7 +76,7 @@ class SessionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sesin $Sesin)
+    public function update(Request $request, Sesin $session)
     {
         //
 
@@ -82,7 +85,7 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sesin $Sesin)
+    public function destroy(Sesin $session)
     {
         //
     }

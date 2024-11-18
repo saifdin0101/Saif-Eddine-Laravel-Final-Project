@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BodyController;
+use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TrainerController;
@@ -33,7 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout')->middleware('CheckOut');
     Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');
     Route::resource('session', SessionController::class);
+    Route::get('/session/show/{session}',[SessionController::class,'show'])->name('session.show')->middleware('Session');
     Route::get('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
+    Route::resource('exercice', ExerciceController::class);
 
 });
 require __DIR__ . '/auth.php';

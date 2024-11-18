@@ -305,3 +305,50 @@ scrollbar-color: #00e0d4 #002222;
   color: #00e0d4;
   display: none;
 }
+
+
+ .tilt-card {
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+/*
+.tilt-card:hover {
+  transform: rotateY(24deg) rotateX(12deg);
+}
+
+.tilt-inner {
+  transform-style: inherit;
+} */
+
+
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+/* .tilt-card {
+  perspective: 500px;
+  transform-style: preserve-3d;
+} */
+
+/* .tilt-card:hover img {
+  transform: rotateY(5deg) rotateX(5deg);
+} */

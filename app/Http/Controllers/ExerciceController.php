@@ -29,6 +29,35 @@ class ExerciceController extends Controller
     public function store(Request $request)
     {
         //
+        
+        request()->validate([
+            'name' => 'required',
+            'image' => 'required |image',
+            'descreption' => 'required',
+            'time' => 'required',
+            'sesin_id' => 'required',
+            'calories' => 'required|numeric',
+            'location' => 'required',
+            'premium' => 'nullable'
+        ]);
+       
+
+        $image = $request->image;
+        $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
+        $image->move(storage_path('app/public/images'), $imageName);
+        
+        Exercice::create([
+            'name' => $request->name,
+            'calories' => $request->calories,
+            'descreption' => $request->descreption,
+            'time' => $request->time,
+            'location' => $request->location,
+            'premium' => $request->premium ,
+            'sesin_id'=>$request->sesin_id,
+            'image' => $imageName,
+        ]);
+      
+        return back();
     }
 
     /**
@@ -37,7 +66,7 @@ class ExerciceController extends Controller
     public function show(Exercice $exercice)
     {
         //
-       
+
     }
 
     /**

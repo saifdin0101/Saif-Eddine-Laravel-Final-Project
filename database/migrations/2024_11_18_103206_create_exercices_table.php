@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('exercices', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('descreption');
+            $table->string('image');
+            $table->string('calories');
+            $table->string('location');
+            $table->string('time');
+            $table->foreignId('sesin_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
