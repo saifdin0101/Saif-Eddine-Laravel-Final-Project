@@ -8,11 +8,15 @@
             <div class="w-[30%] "></div>
             <div class="w-full text-blue-50 relative mt-[10rem]">
                 <div class="absolute right-10">
-                    <button onclick="openModal('modelConfirm3')"
-                        class="relative animate-float px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full transition-transform hover:scale-110 shadow-lg">
-                        Create Exersice
-                        <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Create Exercice!</div>
-                    </button>
+                    @if (Auth::user()->role == 'trainer')
+                        <button onclick="openModal('modelConfirm3')"
+                            class="relative animate-float px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full transition-transform hover:scale-110 shadow-lg">
+                            Create Exersice
+                            <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Create Exercice!
+                            </div>
+                        </button>
+                    @endif
+
                 </div>
                 <div class=" flex justify-center items-center mt-[5rem] flex-wrap gap-5 ">
                     @forelse ($exercices as $exercice)
@@ -39,21 +43,21 @@
                                 <!-- Exercise Name -->
                                 <div class="text-xl font-bold">{{ $exercice->name }}</div>
                                 @if (Auth::user()->favoriteExercises->contains($exercice->id))
-                               
-                                    <form method="POST" class="absolute top-6 right-5" action="{{ route('exercice.dettach') }}">
+                                    <form method="POST" class="absolute top-6 right-5"
+                                        action="{{ route('exercice.dettach') }}">
                                         @csrf
                                         <input name="exercise_id" value="{{ $exercice->id }}" type="hidden">
-                                       
-                                        
-                                            <div class="relative flex justify-center items-center">
-                                                <svg  viewBox="0 0 24 24" class="w-6 absolute h-6 fill-current text-[#00e0d4] ">
-                                                    <path 
-                                                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
-                                                    </path>
-                                                </svg>
-                                                <button class="absolute h-[20px] w-[20px] z-30 "></button>
-                                            </div>
-                                       
+
+
+                                        <div class="relative flex justify-center items-center">
+                                            <svg viewBox="0 0 24 24" class="w-6 absolute h-6 fill-current text-[#00e0d4] ">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                                                </path>
+                                            </svg>
+                                            <button class="absolute h-[20px] w-[20px] z-30 "></button>
+                                        </div>
+
                                     </form>
                                 @else
                                     <form class="absolute top-2 right-2" method="POST"
@@ -93,16 +97,20 @@
                                     </div>
                                 </div>
                                 @if (Auth::user()->DoneExercice->contains($exercice->id))
-                                    <div class="bg-black w-[25rem] h-[30rem] absolute top-[-15rem] right-[0rem] opacity-70 z-[999] flex justify-center items-center"><i class="bi bi-check2-all text-9xl"></i></div>
+                                    <div
+                                        class="bg-black w-[25rem] h-[30rem] absolute top-[-15rem] right-[0rem] opacity-70 z-[999] flex justify-center items-center">
+                                        <i class="bi bi-check2-all text-9xl"></i></div>
                                 @else
-                                <form method="POST" class="absolute right-0 bottom-0 bg-[#00e0d4] rounded-tl-full pl-3 py-2 hover:bg-[#0c3331] duration-200 cursor-pointer" action="{{ route('exercice.done') }}">
-                                    @csrf
-                                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
-                                    <input name="exercice_id" value="{{ $exercice->id }}" type="hidden">
-                                    <button>Mark Exercice Done</button>
-                                </form>
+                                    <form method="POST"
+                                        class="absolute right-0 bottom-0 bg-[#00e0d4] rounded-tl-full pl-3 py-2 hover:bg-[#0c3331] duration-200 cursor-pointer"
+                                        action="{{ route('exercice.done') }}">
+                                        @csrf
+                                        <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                        <input name="exercice_id" value="{{ $exercice->id }}" type="hidden">
+                                        <button>Mark Exercice Done</button>
+                                    </form>
                                 @endif
-                                
+
 
                                 <!-- Calories -->
                                 <div class="text-lg font-semibold flex items-center space-x-2 text-red-500">

@@ -2,12 +2,13 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Join;
+use App\Models\Exercice;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class SessionMiddleware
+class FavoriteMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,16 +17,12 @@ class SessionMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = auth()->user();
-        $session =$request->route('session') ;
-        
-       
-        if ( $user && Join::where('user_id',$user->id)->where('sesin_id',$session->id)->exists() ) {
-            
+        $user  = User::where("id", auth()->user()->id)->first();
+        $exoID = $request->exercice_id;
+        dd($exoID);
+        if ($user->DoneExercice()->where('exercice_id', $exoID)->exists()) {
             return $next($request);
         }
-
-        return redirect()->route('session.index')->with('error','Join The Session  First');
         
     }
 }

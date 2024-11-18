@@ -82,7 +82,7 @@ class ExerciceController extends Controller
     }
     public function done(Request $request)
     {
-        $user = auth()->user();   
+        $user = auth()->user();
         $exoID = $request->exercice_id;
 
 
@@ -95,7 +95,7 @@ class ExerciceController extends Controller
 
 
         $burnedCalories = Exercice::where('id', $exoID)->first();
-        
+
 
 
         if ($userBody && $burnedCalories) {
@@ -152,11 +152,14 @@ class ExerciceController extends Controller
     public function dettach(Request $request)
     {
         //
+
         $user = auth()->user();
         $exoID = $request->exercise_id;
 
 
-        if ($user->favoriteExercises()->where('exercice_id', $exoID)->where('user_id', $user->id)->exists()) {
+
+        if ($user->favoriteExercises()->where('favorites.exercice_id', $exoID)->where('favorites.user_id', $user->id)->exists()) {
+            
             $user->favoriteExercises()->detach($exoID);
         }
         return back()->with('success', 'Ecercice Been Removed From Favorite');

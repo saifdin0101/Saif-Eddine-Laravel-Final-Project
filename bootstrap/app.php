@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'OneInALifeTime' => SeenBodyMiddleware::class ,
             'CheckOut' => CheckOutMiddleware::class ,
             'Session' => SessionMiddleware::class ,
+            'Favorite' => SessionMiddleware::class ,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
