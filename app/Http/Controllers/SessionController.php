@@ -6,6 +6,8 @@ use App\Models\Exercice;
 use App\Models\Sesin;
 use Illuminate\Http\Request;
 
+use function Pest\Laravel\get;
+
 class SessionController extends Controller
 {
     /**
@@ -32,6 +34,7 @@ class SessionController extends Controller
     public function store(Request $request)
     {
         //
+        
 
         request()->validate([
             'name' => 'required',
@@ -40,7 +43,7 @@ class SessionController extends Controller
             'image' => 'required',
             'user_id' => 'required',
         ]);
-
+        
         $image = $request->image;
         $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
         $image->move(storage_path('app/public/images'), $imageName);
@@ -61,7 +64,7 @@ class SessionController extends Controller
     public function show(Sesin $session)
     {
         //
-        $exercices = Exercice::all();
+        $exercices = Exercice::where('sesin_id',$session->id)->get();
         return view('trainer.partials.exerciceShow',compact('session','exercices'));
     }
 

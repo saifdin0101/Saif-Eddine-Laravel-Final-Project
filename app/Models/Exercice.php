@@ -14,6 +14,7 @@ class Exercice extends Model
         'time',
         'sesin_id',
         'calories',
-        'location'
+        'location',
+        'premium'
     ];
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('calories');
             $table->string('location');
             $table->string('time');
+            $table->string('premium')->nullable();
             $table->foreignId('sesin_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

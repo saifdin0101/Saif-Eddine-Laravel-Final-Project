@@ -20,7 +20,7 @@
 
             <div class="mt-14 py-5 flex justify-center items-center flex-col gap-5">
                 @forelse ($sessions as $session)
-                    <div class="h-[25rem] tilt-card  w-[55rem] overflow-hidden rounded-3xl relative group transition-all duration-500 hover:shadow-2xl">
+                    <div class="h-[25rem] tilt-card shadow-lg hover:shadow-[#40f9ff]/50    w-[55rem] overflow-hidden rounded-3xl relative group transition-all duration-500 hover:shadow-2xl">
                         <img class="h-full w-full hover:scale-105 transition-transform duration-700 rounded-2xl"
                             src="{{ asset('storage/images/' . $session->image) }}" alt="">
 
@@ -70,7 +70,7 @@
                                 <form action="{{ route('session.join', $session->id) }}" method="POST">
                                     @csrf
                                     <button
-                                        class="flex text-sm hover:bg-black duration-200 justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md">
+                                        class="flex text-sm hover:bg-black duration-200 justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-7 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md">
                                         Join Us Now
                                         <div
                                             class="bg-white rounded-full px-1 text-black flex justify-center items-center">
@@ -103,16 +103,82 @@
             </button>
         </div>
         <form method="post" action="{{ route('session.store') }}" enctype="multipart/form-data"
-            class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8">
-            @csrf
-            <!-- Form Fields Here -->
-            <div>
-                <button type="submit"
-                    class="w-full py-3 px-4 rounded-lg text-white font-semibold bg-[#004f5f] hover:bg-[#00e0d4] transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none">
-                    Create Session
-                </button>
+    class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8">
+    @csrf
+    <div class="space-y-4">
+        <div>
+            <label for="image" class="block text-white font-medium mb-2">Session Image</label>
+            
+            <!-- Custom File Upload Input -->
+            <div class="file-upload-container">
+                <input id="image" name="image" type="file" class="hidden" accept="image/*" onchange="updateFileName()">
+                
+                <!-- Custom File Upload Button with SVG -->
+                <label for="image" class="file-upload-button w-full p-3 rounded-lg border border-gray-300 cursor-pointer bg-white text-gray-900">
+                    <div class="flex items-center justify-center gap-2">
+                        <!-- Upload Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-[#00e0d4]">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16M5 12l7-7 7 7" />
+                        </svg>
+                        <span class="text-[#00e0d4]">Upload Image</span>
+                    </div>
+                </label>
+                
+                <!-- File Name Display (Hidden Until File is Chosen) -->
+                <div id="file-name" class="text-[#00e0d4] mt-2 text-center hidden">No file chosen</div>
             </div>
-        </form>
+        </div>
+
+        <div>
+            <label for="name" class="block text-white font-medium mb-2">Name</label>
+            <input id="name" name="name" type="text"
+                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
+                placeholder="Enter session name" required>
+        </div>
+
+        <div>
+            <label for="start_at" class="block text-white font-medium mb-2">Start Date</label>
+            <input id="start_at" name="start_time" type="date"
+                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
+                required>
+        </div>
+
+        <div>
+            <label for="end_at" class="block text-white font-medium mb-2">End Date</label>
+            <input id="end_at" name="end_time" type="date"
+                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
+                required>
+        </div>
+
+        <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+
+        <div>
+            <button type="submit"
+                class="w-full py-3 px-4 rounded-lg text-white font-semibold bg-[#004f5f] hover:bg-[#00e0d4] transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none">
+                Create Session
+            </button>
+        </div>
+    </div>
+</form>
+
+<script>
+   
+    function updateFileName() {
+        const fileInput = document.getElementById('image');
+        const fileName = document.getElementById('file-name');
+        
+        if (fileInput.files.length > 0) {
+            fileName.textContent = fileInput.files[0].name;
+            fileName.classList.remove('hidden');
+        } else {
+            fileName.textContent = 'No file chosen';
+            fileName.classList.add('hidden');
+        }
+    }
+</script>
+
+
+
     </div>
 </div>
 

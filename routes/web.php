@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');
     Route::resource('session', SessionController::class);
     Route::get('/session/show/{session}',[SessionController::class,'show'])->name('session.show')->middleware('Session');
-    Route::get('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
+    Route::post('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
     Route::resource('exercice', ExerciceController::class);
 
 });

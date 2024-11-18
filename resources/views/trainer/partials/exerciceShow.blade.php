@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <div class="100vw flex">
-            <div class="w-[30%] bg-red-500"></div>
+            <div class="w-[30%] "></div>
             <div class="w-full text-blue-50 relative mt-[10rem]">
                 <div class="absolute right-10">
                     <button onclick="openModal('modelConfirm3')"
@@ -20,7 +20,7 @@
                         <!-- Image -->
                         <div class="relative">
                             <img src="{{ asset('storage/images/' . $exercice->image) }}" alt="Exercise Image"
-                                class="w-full h-56 object-cover rounded-t-lg">
+                                class="w-[400px] h-56 object-cover rounded-t-lg">
                     
                             <!-- Gradient Overlay -->
                             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black opacity-40 rounded-t-lg"></div>
