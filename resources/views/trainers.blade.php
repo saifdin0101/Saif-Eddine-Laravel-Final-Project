@@ -50,7 +50,8 @@
                         <div class=" w-full">
                             <div class=" w-full h-[600px] flex justify-center items-center">
 
-                                <div class="h-[90%] w-[90%] flex justify-center items-center flex-wrap gap-5 overflow-y-scroll">
+                                <div
+                                    class="h-[90%] w-[90%] flex justify-center items-center flex-wrap gap-5 overflow-y-scroll">
                                     @forelse ($trainers as $trainer)
                                         <div
                                             class="relative h-[16rem] cartshadow w-[14rem] bg-white rounded-xl shadow-lg overflow-hidden group">
@@ -77,13 +78,13 @@
                                                 <p class="text-xs text-gray-500">Certified Trainer</p>
                                             </div>
 
-                                           
+
                                             <button
                                                 class="absolute bottom-0 w-full bg-[#40f9ff] text-white py-2 text-center font-semibold transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                                                 View Profile
                                             </button>
 
-                                           
+
                                             <div
                                                 class="absolute bottom-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                                 <svg class="w-4 h-4 text-[#40f9ff] group-hover:translate-x-1 transition-transform duration-300"
@@ -251,5 +252,5 @@
 
         </div>
     </div>
-    </div>
+    
 @endsection

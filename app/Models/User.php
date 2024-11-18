@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function trainers (){
         return $this->hasMany(Trainer::class);
     }
+    public function sesins () {
+        return $this->hasMany(Sesin::class);
+    }
 }

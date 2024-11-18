@@ -224,6 +224,11 @@
     background-repeat: no-repeat; 
     
   }
+  .img6{
+    background-image: url('../imageBG/img6.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+  }
 .smooths{
   transition: clip-path 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
@@ -272,3 +277,31 @@ color: #05a59d;
 }
 scrollbar-width: thin;
 scrollbar-color: #00e0d4 #002222; 
+.file-upload-container {
+  position: relative;
+}
+
+.file-upload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #00e0d4;
+  transition: all 0.3s ease;
+}
+
+.file-upload-button:hover {
+  background-color: #00e0d4;
+  border-color: #004f5f;
+}
+
+.file-upload-button:hover svg,
+.file-upload-button:hover span {
+  color: white;
+}
+
+#file-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00e0d4;
+  display: none;
+}

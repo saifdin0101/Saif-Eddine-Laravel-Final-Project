@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BodyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('body', BodyController::class)->middleware('OneInALifeTime');
     Route::resource('trainer', TrainerController::class);
     Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout')->middleware('CheckOut');
-    Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');;
+    Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');
+    Route::resource('session', SessionController::class);
 });
 require __DIR__ . '/auth.php';
