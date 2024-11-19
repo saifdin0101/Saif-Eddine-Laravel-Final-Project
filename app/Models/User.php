@@ -66,4 +66,8 @@ public function DoneExercice()
 {
     return $this->belongsToMany(Exercice::class, 'dones');
 }
+// public function sessions()
+// {
+//     return $this->belongsToMany(Sesin::class,'Buy_Sessions')->withPivot('pay');
+// }
 }

@@ -88,12 +88,13 @@
                                 @else
                                 <form method="post" action="{{ route('session.checkout') }}">
                                     @csrf
-                                    <input name="session_id" value="{{ $session->id }}" type="hidden">
-                                    <button
-                                        class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
-                                        Buy  The Session
+                                    <input name="sesin_id" value="{{ $session->id }}" type="hidden">
+                                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                    <button class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                        Buy The Session
                                     </button>
                                 </form>
+                                
                              @endif
 
                             </div>

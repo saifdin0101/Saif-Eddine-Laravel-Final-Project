@@ -64,56 +64,53 @@ class SessionController extends Controller
 
         return back();
     }
-    public function checkout()
+    public function checkout(Request $request)
     {
-        //
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
-        Stripe::setApiKey(config('stripe.sk'));
+        // Assuming you have the session ID from the request
+        $sessionId = $request->sesin_id;
+        $userId = $request->user_id;
 
-        $session = Session::create([
-            'line_items'  => [
+        $session = \Stripe\Checkout\Session::create([
+            'line_items' => [
                 [
                     'price_data' => [
-                        'currency'     => 'usd',
-                        'product_data' => [
-                            "name" => "Buy Section",
-
-                        ],
-                        'unit_amount'  => 15 * 10,
+                        'currency' => 'usd',
+                        'product_data' => ['name' => 'Buy Section'],
+                        'unit_amount' => 1500,
                     ],
-                    'quantity'   => 1,
+                    'quantity' => 1,
                 ],
-
             ],
-            'mode'        => 'payment',
-
-            'success_url' => route('session.paymentSuccess'),
-            'cancel_url'  => route('dashboard'),
+            'mode' => 'payment',
+            'success_url' => route('session.paymentSuccess', ['session_id' => $sessionId,'user_id' => $userId]),
+            'cancel_url' => route('dashboard'),
         ]);
 
         return redirect()->away($session->url);
     }
     public function paymentSuccess(Request $request)
-{
-    $sessionId = $request->session_id; 
-    
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-    
-    $trainerRequest = Sesin::where('id', $sessionId)->first();
 
-   
-
-    if ($trainerRequest) {
+        $sessionId = $request->query('session_id');
+        $userId = $request->query('user_id');
        
-        $trainerRequest->update(['pay' => true]);
 
-        return redirect()->route('dashboard')->with('success', 'Get Stronger With Our Sessions.');
+
+
+        $trainerRequest = Sesin::where('user_id', $userId)->where('id', $sessionId)->first();
+
+        if ($trainerRequest) {
+            $trainerRequest->update(['pay' => true]);
+
+            return redirect()->route('dashboard')->with('success', 'Get Stronger With Our Sessions.');
+        }
+
+        return redirect()->route('dashboard')->with('error', 'Something went wrong, try again.');
     }
-
-    return redirect()->route('dashboard')->with('error', 'Something went wrong, try again.');
-}
-
 
     /**
      * Display the specified resource.
