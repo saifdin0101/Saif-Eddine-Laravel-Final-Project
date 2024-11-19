@@ -168,14 +168,14 @@
                     <div>
                         <label for="image" class="block text-white font-medium mb-2">Exercise Image</label>
                         <input name="image" type="file"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300">
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300">
                     </div>
 
 
                     <div>
                         <label for="name" class="block text-white font-medium mb-2">Exercise Name</label>
                         <input name="name" type="text"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
                             placeholder="Enter exercise name" required>
                     </div>
 
@@ -183,7 +183,7 @@
                     <div>
                         <label for="calories" class="block text-white font-medium mb-2">Calories Burned</label>
                         <input name="calories" type="text"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
                             placeholder="Enter calories burned" required>
                     </div>
 
@@ -191,7 +191,7 @@
                     <div>
                         <label for="description" class="block text-white font-medium mb-2">Description</label>
                         <textarea name="descreption" rows="4"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
                             placeholder="Describe the exercise" required></textarea>
                     </div>
 
@@ -199,7 +199,7 @@
                     <div>
                         <label for="time" class="block text-white font-medium mb-2">Exercise Time</label>
                         <input name="time" type="time"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
                             required>
                     </div>
                     <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
@@ -207,7 +207,7 @@
                     <div>
                         <label for="location" class="block text-white font-medium mb-2">Exercise Location</label>
                         <select name="location"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
                             required>
                             <option selected disabled value="">Select Exercise Location</option>
                             <option value="gym_room_1">Gym room 1</option>

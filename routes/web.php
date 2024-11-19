@@ -31,8 +31,8 @@ Route::middleware('auth', 'BodyInformation')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('body', BodyController::class)->middleware('OneInALifeTime');
     Route::resource('trainer', TrainerController::class);
-    Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout')->middleware('CheckOut');
-    Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success')->middleware('CheckOut');
+    Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout');
+    Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success');
     Route::resource('session', SessionController::class);
     Route::get('/session/show/{session}',[SessionController::class,'show'])->name('session.show')->middleware('Session');
     Route::post('/session/join/{session}', [SessionController::class,'joinSession'])->name('session.join');
@@ -40,7 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/exercises/favorite', [ExerciceController::class, 'favorite'])->name('exercice.favorite');
     Route::post('/exercises/dettach', [ExerciceController::class, 'dettach'])->name('exercice.dettach');
     Route::post('/exercises/done', [ExerciceController::class, 'done'])->name('exercice.done');
-
+    Route::post('/session/checkout', [SessionController::class, 'checkout'])->name('session.checkout');
+    Route::get('/session/payment/success', [SessionController::class, 'paymentSuccess'])->name('session.paymentSuccess');
 
 
 

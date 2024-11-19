@@ -12,7 +12,9 @@ class Sesin extends Model
         'start_time',
         'end_time',
         'image',
-        'user_id'
+        'user_id',
+        'pay',
+        'premium'
     ];
 
 

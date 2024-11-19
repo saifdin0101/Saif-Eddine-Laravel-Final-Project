@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('start_time');
             $table->string('end_time');
             $table->string('image');
+            $table->boolean('pay')->default(false)->nullable();
+            $table->string('premium')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

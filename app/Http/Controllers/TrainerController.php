@@ -52,6 +52,7 @@ class TrainerController extends Controller
 
             ],
             'mode'        => 'payment',
+            
             'success_url' => route('trainer.success'),
             'cancel_url'  => route('dashboard'),
         ]);
@@ -65,13 +66,13 @@ class TrainerController extends Controller
 
 
         $trainerRequest = Trainer::where('user_id', $user->id)->first();
-
+       
         if ($trainerRequest) {
             $trainerRequest->update(['payment' => true]);
 
             return redirect()->route('dashboard')->with('success', 'Payment successful, your trainer request is now active.');
         }
-
+        
         return redirect()->route('dashboard')->with('error', 'No trainer request found for this user.');
     }
 
