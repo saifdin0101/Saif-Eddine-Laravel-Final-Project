@@ -177,7 +177,7 @@
                         <label for="premium" class="block text-white font-medium mb-2">Make It Premium</label>
                         <input id="premium" name="premium" type="checkbox"
                             class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
-                            required>
+                            >
                     </div>
 
 

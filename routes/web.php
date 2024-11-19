@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BodyController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
@@ -42,7 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/exercises/done', [ExerciceController::class, 'done'])->name('exercice.done');
     Route::post('/session/checkout', [SessionController::class, 'checkout'])->name('session.checkout');
     Route::get('/session/payment/success', [SessionController::class, 'paymentSuccess'])->name('session.paymentSuccess');
-
+    Route::resource('calendar',CalendarController::class);
+    // Route::get('/calendar/create', [CalendarController::class, 'create'])->name('calender.create');
 
 
 });

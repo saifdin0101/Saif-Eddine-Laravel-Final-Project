@@ -6,6 +6,7 @@
 <!-- Option 1: Include in HTML -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +26,7 @@
         @if (!in_array(Route::currentRouteName(), ['login', 'register', 'welcome', 'body.index']))
             <div class="fixed">
                 <nav
-                    class="w-[20rem] absolute top-[10rem] left-10 flex justify-center items-center flex-col rounded-lg h-[40rem] bg-gradient-to-b from-black to-[#00e0d4] text-white shadow-lg">
+                    class="w-[20rem] absolute   flex justify-center items-center flex-col rounded-lg h-[100vh] bg-gradient-to-b from-black to-[#00e0d4] text-white shadow-lg">
                     @if (Auth::user()->role == 'admin')
                         <img class="h-[70px] w-[70px] border-white border-2 absolute top-10 mb-5 rounded-full object-cover"
                             src="{{ Auth::user()->image }}" alt="">
@@ -44,6 +45,8 @@
                         href="/trainer">Trainers</a>
                     <a class="w-full focus:bg-[] h-[5rem] smooths  hover:bg-[#1e1e1e] custom-rounded flex justify-center items-center"
                         href="/session">Sessions</a>
+                    <a class="w-full focus:bg-[] h-[5rem] smooths  hover:bg-[#1e1e1e] custom-rounded flex justify-center items-center"
+                        href="/calendar">Calendar</a>
 
                     <a class="w-full  h-[5rem] smooths  hover:bg-[#1e1e1e] custom-rounded flex justify-center items-center"
                         href="{{ route('profile.edit') }}">Setting</a>
