@@ -135,8 +135,12 @@ class SessionController extends Controller
     public function show(Sesin $session)
     {
         //
+        $user = Auth::user();
         $exercices = Exercice::where('sesin_id', $session->id)->get();
-        return view('trainer.partials.exerciceShow', compact('session', 'exercices'));
+        $owner= Sesin::where('user_id',$user->id)->get();
+        // $owner = Sesin::where('user_id', $user->id)->where('sesin_id', $session->id)->get();
+        // dd($test);
+        return view('trainer.partials.exerciceShow', compact('session', 'exercices','session'));
     }
 
     /**

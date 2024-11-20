@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthProfileController;
 use App\Http\Controllers\BodyController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ExerciceController;
@@ -32,6 +33,7 @@ Route::middleware('auth', 'BodyInformation')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('body', BodyController::class)->middleware('OneInALifeTime');
     Route::resource('trainer', TrainerController::class);
+    Route::get('/trainer/show/{id}',[TrainerController::class ,'show'])->name('trainer.show');
     Route::post('/trainer/checkout', [TrainerController::class, 'checkout'])->name('trainer.checkout');
     Route::get('/trainer/payment/success', [TrainerController::class, 'paymentSuccess'])->name('trainer.success');
     Route::resource('session', SessionController::class);
@@ -44,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/session/checkout', [SessionController::class, 'checkout'])->name('session.checkout');
     Route::get('/session/payment/success', [SessionController::class, 'paymentSuccess'])->name('session.paymentSuccess');
     Route::resource('calendar',CalendarController::class);
+    Route::get('/auth/profilee/{user}',[AuthProfileController::class,'show'])->name('auth.profilee');
     // Route::get('/calendar/create', [CalendarController::class, 'create'])->name('calender.create');
 
 

@@ -8,7 +8,7 @@
             <div class="w-[30%] "></div>
             <div class="w-full text-blue-50 relative mt-[10rem]">
                 <div class="absolute right-10">
-                    @if (Auth::user()->role == 'trainer')
+                    @if (Auth::user()->role == 'trainer' && $session->user_id == Auth::user()->id)
                         <button onclick="openModal('modelConfirm3')"
                             class="relative animate-float px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full transition-transform hover:scale-110 shadow-lg">
                             Create Exersice
@@ -22,12 +22,12 @@
                     @forelse ($exercices as $exercice)
                         <div
                             class="exercise-card bg-[#004f5f] text-white rounded-lg shadow-2xl overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-3xl">
-                            <!-- Image -->
+
                             <div class="relative">
                                 <img src="{{ asset('storage/images/' . $exercice->image) }}" alt="Exercise Image"
                                     class="w-[400px] h-56 object-cover rounded-t-lg">
 
-                                <!-- Gradient Overlay -->
+
                                 <div
                                     class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black opacity-40 rounded-t-lg">
                                 </div>
@@ -38,9 +38,9 @@
                                     Recomanded
                                 </div>
                             @endif
-                            <!-- Content -->
+
                             <div class="p-6 space-y-4 relative">
-                                <!-- Exercise Name -->
+
                                 <div class="text-xl font-bold">{{ $exercice->name }}</div>
                                 @if (Auth::user()->favoriteExercises->contains($exercice->id))
                                     <form method="POST" class="absolute top-6 right-5"
@@ -80,16 +80,16 @@
                                     </form>
                                 @endif
 
-                                <!-- Description -->
+
                                 <div class="text-sm text-gray-300 h-20 overflow-hidden">
                                     {{ $exercice->descreption }}
                                 </div>
 
-                                <!-- Time and Location -->
+
                                 <div class="flex justify-between items-center text-sm text-gray-200">
                                     <div class="flex items-center justify-center  space-x-2">
                                         <i class="bi bi-stopwatch-fill text-[#00e0d4] pb-1"></i>
-                                        <span>{{ $exercice->time }}</span>
+                                        <span>{{ $exercice->time }} min</span>
                                     </div>
                                     <div class="flex items-center space-x-2 pb-1">
                                         <i class="bi bi-geo-alt-fill text-[#00e0d4]"></i>
@@ -99,7 +99,8 @@
                                 @if (Auth::user()->DoneExercice->contains($exercice->id))
                                     <div
                                         class="bg-black w-[25rem] h-[30rem] absolute top-[-15rem] right-[0rem] opacity-70 z-[999] flex justify-center items-center">
-                                        <i class="bi bi-check2-all text-9xl"></i></div>
+                                        <i class="bi bi-check2-all text-9xl"></i>
+                                    </div>
                                 @else
                                     <form method="POST"
                                         class="absolute right-0 bottom-0 bg-[#00e0d4] rounded-tl-full pl-3 py-2 hover:bg-[#0c3331] duration-200 cursor-pointer"
@@ -112,7 +113,7 @@
                                 @endif
 
 
-                                <!-- Calories -->
+
                                 <div class="text-lg font-semibold flex items-center space-x-2 text-red-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
@@ -122,7 +123,7 @@
                                     <span class="text-[#00e0d4]">{{ $exercice->calories }} Calories</span>
                                 </div>
 
-                                <!-- Premium Badge -->
+
 
                             </div>
                         </div>
@@ -168,14 +169,14 @@
                     <div>
                         <label for="image" class="block text-white font-medium mb-2">Exercise Image</label>
                         <input name="image" type="file"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300">
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300">
                     </div>
 
 
                     <div>
                         <label for="name" class="block text-white font-medium mb-2">Exercise Name</label>
                         <input name="name" type="text"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
                             placeholder="Enter exercise name" required>
                     </div>
 
@@ -183,7 +184,7 @@
                     <div>
                         <label for="calories" class="block text-white font-medium mb-2">Calories Burned</label>
                         <input name="calories" type="text"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
                             placeholder="Enter calories burned" required>
                     </div>
 
@@ -191,23 +192,28 @@
                     <div>
                         <label for="description" class="block text-white font-medium mb-2">Description</label>
                         <textarea name="descreption" rows="4"
-                            class="w-full p-3 rounded-lg border border-gray-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300  focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
                             placeholder="Describe the exercise" required></textarea>
                     </div>
 
 
                     <div>
                         <label for="time" class="block text-white font-medium mb-2">Exercise Time</label>
-                        <input name="time" type="time"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
-                            required>
+                        <select required id="time" name="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            <option value="1">1 min</option>
+                            <option value="5">5 min</option>
+                            <option value="10">10 min</option>
+                            <option value="15">15 min</option>
+                            <option value="30">30 min</option>
+                            <option value="60">1 hour</option>
+                        </select>
                     </div>
                     <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
                     <input name="sesin_id" value="{{ $session->id }}" type="hidden">
                     <div>
                         <label for="location" class="block text-white font-medium mb-2">Exercise Location</label>
                         <select name="location"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-zinc-800 text-gray-900 transition duration-300"
+                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300"
                             required>
                             <option selected disabled value="">Select Exercise Location</option>
                             <option value="gym_room_1">Gym room 1</option>
@@ -227,7 +233,8 @@
                     <div class="flex items-center space-x-2">
                         <input name="premium" value="Recomanded" type="checkbox" id="premium"
                             class="w-5 h-5 text-[#00e0d4] focus:ring-[#00e0d4]">
-                        <label for="premium" class="text-white font-medium">Make this a Exercise as Hight Recomanded</label>
+                        <label for="premium" class="text-white font-medium">Make this a Exercise as Hight
+                            Recomanded</label>
                     </div>
 
 

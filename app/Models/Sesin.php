@@ -22,7 +22,7 @@ class Sesin extends Model
         return $this->belongsTo(User::class);
     }
     public function users () {
-        return $this->belongsToMany(User::class,'Joins');
+        return $this->belongsToMany(User::class,'Joins', 'user_id', 'sesin_id')->withTimestamps();;
     }
     // public function userss()
     // {

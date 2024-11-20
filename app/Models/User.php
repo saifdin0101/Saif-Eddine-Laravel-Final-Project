@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $this->hasMany(Sesin::class);
     }
     public function exerciceSesins () {
-        return $this->belongsToMany(Sesin::class,'Joins');
+        return $this->belongsToMany(Sesin::class,'Joins', 'user_id', 'sesin_id')->withTimestamps();;
     }
     public function favoriteExercises()
 {
@@ -65,6 +65,9 @@ class User extends Authenticatable
 public function DoneExercice()
 {
     return $this->belongsToMany(Exercice::class, 'dones');
+}
+public function userBodyInfo (){
+    return $this->hasMany(Body::class);
 }
 // public function sessions()
 // {

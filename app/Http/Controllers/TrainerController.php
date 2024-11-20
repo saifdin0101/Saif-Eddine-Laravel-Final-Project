@@ -19,6 +19,8 @@ class TrainerController extends Controller
         //
 
         $trainers = User::where('role', 'trainer')->get();
+       
+       
 
         return view('trainers', compact('trainers'));
     }
@@ -106,9 +108,10 @@ class TrainerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id , Trainer $trainer)
     {
-        //
+        //compact('trainer')
+        return view('trainer.trainerShow');
     }
 
     /**
