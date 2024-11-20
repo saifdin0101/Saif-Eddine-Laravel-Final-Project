@@ -28,7 +28,24 @@ class SessionController extends Controller
      */
     public function create()
     {
-        //
+
+        $events = Sesin::all();
+
+        // Map the events to the necessary data structure for FullCalendar
+        $events = $events->map(function ($e) {
+            return [
+                "start" => $e->start_time,  // Use the start_time field
+                "end" => $e->end_time,      // Use the end_time field
+                "color" => "#fcc102",       // Optional: color of the event (can be customized)
+                "passed" => false,          // You can add logic to determine if an event has passed
+                "title" => $e->name,        // Set the event title (or any other info you want to display)
+            ];
+        });
+
+        // Return the events in a JSON response for FullCalendar
+        return response()->json([
+            "events" => $events
+        ]);
     }
 
     /**
@@ -54,8 +71,8 @@ class SessionController extends Controller
 
         Sesin::create([
             'name' => $request->name,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
+            'start_time' => $request->start_time . ":00",
+            'end_time' => $request->end_time . ":00",
             'image' => $imageName,
             'pay' => false,
             'user_id' => $request->user_id,
@@ -84,7 +101,7 @@ class SessionController extends Controller
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => route('session.paymentSuccess', ['session_id' => $sessionId,'user_id' => $userId]),
+            'success_url' => route('session.paymentSuccess', ['session_id' => $sessionId, 'user_id' => $userId]),
             'cancel_url' => route('dashboard'),
         ]);
 
@@ -97,7 +114,7 @@ class SessionController extends Controller
 
         $sessionId = $request->query('session_id');
         $userId = $request->query('user_id');
-       
+
 
 
 

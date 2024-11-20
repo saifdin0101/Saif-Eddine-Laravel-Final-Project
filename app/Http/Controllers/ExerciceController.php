@@ -31,6 +31,7 @@ class ExerciceController extends Controller
     public function store(Request $request)
     {
         //
+        
 
         request()->validate([
             'name' => 'required',
@@ -40,7 +41,7 @@ class ExerciceController extends Controller
             'sesin_id' => 'required',
             'calories' => 'required|numeric',
             'location' => 'required',
-            'premium' => 'nullable',
+            'premium' => 'required',
             'user_id' => 'required'
         ]);
 
@@ -56,7 +57,7 @@ class ExerciceController extends Controller
             'descreption' => $request->descreption,
             'time' => $request->time,
             'location' => $request->location,
-            'premium' => $request->premium,
+            'premium' => 'Recomanded',
             'sesin_id' => $request->sesin_id,
             'image' => $imageName,
             'user_id' => $request->user_id,

@@ -59,10 +59,9 @@
                             <!-- Session Info -->
                             <div class="flex flex-col gap-10 absolute bottom-10 left-5">
                                 <h1 class="text-3xl font-bold text-white">{{ $session->name }}</h1>
-                               
-                            @if ($session->pay)
-                                
-                                @if (Auth::user()->exerciceSesins->contains($session->id))
+
+                                @if ( !$session->premium ||   $session->pay )
+                                    @if (Auth::user()->exerciceSesins->contains($session->id))
                                         <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
                                             href="{{ route('session.show', $session->id) }}">
                                             Check Out Our Exercises
@@ -84,18 +83,17 @@
                                             </button>
                                         </form>
                                     @endif
-                                
                                 @else
-                                <form method="post" action="{{ route('session.checkout') }}">
-                                    @csrf
-                                    <input name="sesin_id" value="{{ $session->id }}" type="hidden">
-                                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
-                                    <button class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
-                                        Buy The Session
-                                    </button>
-                                </form>
-                                
-                             @endif
+                                    <form method="post" action="{{ route('session.checkout') }}">
+                                        @csrf
+                                        <input name="sesin_id" value="{{ $session->id }}" type="hidden">
+                                        <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                        <button
+                                            class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                            Buy The Session
+                                        </button>
+                                    </form>
+                                @endif
 
                             </div>
                         </div>
@@ -107,7 +105,21 @@
             </div>
         </div>
     </div>
-
+    <div class="flex justify-center items-center ml-[10rem] relative mt-[3rem] ">
+        <h1 class="text-center absolute left-[15rem] w-[20rem] rounded-full top-[-20px] text-4xl font-semibold  h-[50px] text-[#40f9ff] mb-6 bg-[#1e1e1e]">Session Calendar</h1>
+        
+     
+    
+       
+        <div id="calendar" class="h-[50rem]  sm:w-3/4 p-8 rounded-lg shadow-lg bg-[#d1f5ff] ml-8">
+           
+            <div class="border-b-2 border-gray-300 mb-4   "></div>
+            <div id="calendar-wrapper" class="p-6 rounded-lg shadow-md bg-white max-h-[70vh] overflow-y-auto">
+                <!-- Calendar will render here -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Modal -->
     <div id="modelConfirm2" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
         <div class="relative top-40 mx-auto rounded-md max-w-md">
@@ -121,76 +133,56 @@
                     </svg>
                 </button>
             </div>
-            <form method="post" action="{{ route('session.store') }}" enctype="multipart/form-data"
-                class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8">
+            <form method="post" action="{{ route('session.store') }}" enctype="multipart/form-data" class="bg-gradient-to-r from-[#00e0d4] to-[#004f5f] p-8 rounded-2xl shadow-lg max-w-xl mx-auto space-y-8">
                 @csrf
                 <div class="space-y-4">
                     <div>
                         <label for="image" class="block text-white font-medium mb-2">Session Image</label>
-
-                        <!-- Custom File Upload Input -->
                         <div class="file-upload-container">
-                            <input id="image" name="image" type="file" class="hidden" accept="image/*"
-                                onchange="updateFileName()">
-
-                            <!-- Custom File Upload Button with SVG -->
-                            <label for="image"
-                                class="file-upload-button w-full p-3 rounded-lg border border-gray-300 cursor-pointer bg-white text-gray-900">
+                            <input id="image" name="image" type="file" class="hidden" accept="image/*">
+                            <label for="image" class="file-upload-button w-full p-3 rounded-lg border border-gray-300 cursor-pointer bg-white text-gray-900">
                                 <div class="flex items-center justify-center gap-2">
-                                    <!-- Upload Icon SVG -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" class="w-5 h-5 text-[#00e0d4]">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4v16M5 12l7-7 7 7" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-[#00e0d4]">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16M5 12l7-7 7 7" />
                                     </svg>
                                     <span class="text-[#00e0d4]">Upload Image</span>
                                 </div>
                             </label>
-
-                            <!-- File Name Display (Hidden Until File is Chosen) -->
                             <div id="file-name" class="text-[#00e0d4] mt-2 text-center hidden">No file chosen</div>
                         </div>
                     </div>
-
+            
                     <div>
                         <label for="name" class="block text-white font-medium mb-2">Name</label>
-                        <input id="name" name="name" type="text"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
-                            placeholder="Enter session name" required>
+                        <input id="name" name="name" type="text" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" placeholder="Enter session name" required>
                     </div>
-
+            
                     <div>
-                        <label for="start_at" class="block text-white font-medium mb-2">Start Date</label>
-                        <input id="start_at" name="start_time" type="date"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
-                            required>
+                        <label for="start" class="block text-white font-medium mb-2">Start Date</label>
+                        <input id="start" name="start_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" required>
                     </div>
-
-
+            
                     <div>
-                        <label for="end_at" class="block text-white font-medium mb-2">End Date</label>
-                        <input id="end_at" name="end_time" type="date"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
-                            required>
+                        <label for="end" class="block text-white font-medium mb-2">End Date</label>
+                        <input id="end" name="end_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" required>
                     </div>
+            
                     <div>
                         <label for="premium" class="block text-white font-medium mb-2">Make It Premium</label>
-                        <input id="premium" name="premium" type="checkbox"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900"
-                            >
+                        <input id="premium" name="premium" type="checkbox" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900">
                     </div>
-
-
+            
                     <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
-
+            
                     <div>
-                        <button type="submit"
-                            class="w-full py-3 px-4 rounded-lg text-white font-semibold bg-[#004f5f] hover:bg-[#00e0d4] transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none">
+                        <button id="submitEvent" type="submit" class="w-full py-3 px-4 rounded-lg text-white font-semibold bg-[#004f5f] hover:bg-[#00e0d4] transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none">
                             Create Session
                         </button>
                     </div>
                 </div>
             </form>
+           
+
 
             <script>
                 function updateFileName() {
@@ -208,7 +200,7 @@
             </script>
 
 
-
+            
         </div>
     </div>
 

@@ -35,7 +35,7 @@
                             @if ($exercice->premium)
                                 <div
                                     class="absolute top-4 right-4 bg-[#00e0d4] text-[#004f5f] py-1 px-4 rounded-full text-xs font-semibold shadow-lg">
-                                    Premium
+                                    Recomanded
                                 </div>
                             @endif
                             <!-- Content -->
@@ -225,9 +225,9 @@
 
 
                     <div class="flex items-center space-x-2">
-                        <input name="premium" type="checkbox" id="premium"
+                        <input name="premium" value="Recomanded" type="checkbox" id="premium"
                             class="w-5 h-5 text-[#00e0d4] focus:ring-[#00e0d4]">
-                        <label for="premium" class="text-white font-medium">Make this a Premium Exercise</label>
+                        <label for="premium" class="text-white font-medium">Make this a Exercise as Hight Recomanded</label>
                     </div>
 
 

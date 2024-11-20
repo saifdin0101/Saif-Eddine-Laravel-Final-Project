@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Calendar;
+use App\Models\Sesin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,12 +25,13 @@ class CalendarController extends Controller
     {
         //
         
-        $events = Calendar::all();
+        
+        $events = Sesin::all();
 
         $events = $events->map(function ($e) {
             return [
-                "start" => $e->start,
-                "end" => $e->end,
+                "start" => $e->start_time,
+                "end" => $e->end_time,
                 "color" => "#fcc102",
                 "passed" => false,
                 "title" => Auth::user()->name,
