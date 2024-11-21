@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.roboto  {
+  font-family: "Lacquer", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
 .spacee {
     font-family: "Anton SC", sans-serif;
   }

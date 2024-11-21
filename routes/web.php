@@ -47,6 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/session/payment/success', [SessionController::class, 'paymentSuccess'])->name('session.paymentSuccess');
     Route::resource('calendar',CalendarController::class);
     Route::get('/auth/profilee/{user}',[AuthProfileController::class,'show'])->name('auth.profilee');
+    Route::get('/ApprovePage',[ExerciceController::class,'ApprovePage'])->name('ApprovePage');
+    Route::put('/ApprovePage/update/{session}',[ExerciceController::class,'publish'])->name('ApprovePage.publish');
+
     // Route::get('/calendar/create', [CalendarController::class, 'create'])->name('calender.create');
 
 

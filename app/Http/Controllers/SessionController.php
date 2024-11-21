@@ -20,7 +20,8 @@ class SessionController extends Controller
     public function index()
     {
         //
-        $sessions = Sesin::all();
+
+        $sessions = Sesin::where('approve',true)->get();
         return view('trainer.session', compact('sessions'));
     }
 
@@ -99,6 +100,7 @@ class SessionController extends Controller
         'pay' => false,
         'user_id' => $request->user_id,
         'premium' => $request->premium == "on" ? true : false,
+        'approve' =>false,
     ]);
 
     return back()->with('success', 'Session created successfully!');

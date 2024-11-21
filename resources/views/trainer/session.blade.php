@@ -19,10 +19,10 @@
                     </div>
                 @endif
 
-                <div class="mt-14 py-5 flex  overflow-y-scroll    items-center flex-wrap gap-5">
+                <div class="mt-14 py-5 flex  overflow-y-scroll  h-[55rem]   items-center flex-wrap gap-5">
                     @forelse ($sessions as $session)
                         <div
-                            class="h-[25rem] ml-10 tilt-card shadow-lg hover:shadow-[#40f9ff]/50 w-[35rem] overflow-hidden rounded-3xl relative group transition-all duration-500 hover:shadow-2xl">
+                            class="h-[25rem] ml-10 tilt-card shadow-lg hover:shadow-[#40f9ff]/50 w-[31.5rem] overflow-hidden rounded-3xl relative group transition-all duration-500 hover:shadow-2xl">
                             <img class="h-full w-full hover:scale-105 transition-transform duration-700 rounded-2xl"
                                 src="{{ asset('storage/images/' . $session->image) }}" alt="">
 
@@ -40,15 +40,15 @@
 
                             <!-- Date Time Section -->
                             <div
-                                class="h-[17rem] w-[15rem] absolute top-10 right-5 rounded-xl flex justify-center items-center flex-col gap-5 bg-white/30 backdrop-blur-lg shadow-lg group-hover:shadow-[#40f9ff]/50 transition-shadow">
+                                class="h-[14rem] w-[13rem] absolute top-2 right-3 rounded-xl flex justify-center items-center flex-col gap-5 bg-white/30 backdrop-blur-lg shadow-lg group-hover:shadow-[#40f9ff]/50 transition-shadow">
                                 <div class="text-xs  text-gray-50">Date Time Of This Session</div>
-                                <div class="img6  text-white relative rounded-lg img6 h-[6rem] w-[14rem]">
+                                <div class="img6  text-white relative rounded-lg img6 h-[4rem] w-[12rem]">
                                     <div class="absolute bottom-2 right-2">
-                                        <div class="text-xs font-semibold">Starting at:</div>
+                                        <div class="text-xs font-semibold ">Starting at:</div>
                                         <div class="text-sm font-semibold">{{ $session->start_time }}</div>
                                     </div>
                                 </div>
-                                <div class="img6 text-white relative rounded-lg img6 h-[6rem] w-[14rem]">
+                                <div class="img6 text-white relative rounded-lg img6 h-[4rem] w-[12rem]">
                                     <div class="absolute bottom-2 right-2">
                                         <div class="text-xs font-semibold">Ending at:</div>
                                         <div class="text-sm font-semibold">{{ $session->end_time }}</div>
@@ -113,7 +113,7 @@
 
 
 
-        <div id="calendar" class="h-[50rem] border-[#00aba3] hover:shadow-[#40f9ff] transition-all duration-500  border-4   sm:w-3/4 p-8 rounded-lg shadow-lg bg-[#ffffff] ml-8">
+        <div id="calendar" class="h-[50rem] border-[#00aba3] shadow-[#40f9ff] transition-all duration-500  border-4   sm:w-3/4 p-8 rounded-lg shadow-lg bg-[#ffffff] ml-8">
 
             <div class="border-b-2 border-gray-300 mb-4   "></div>
             <div id="calendar-wrapper" class="p-6 rounded-lg shadow-md bg-white max-h-[70vh] overflow-y-auto">

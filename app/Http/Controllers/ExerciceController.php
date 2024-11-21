@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Body;
 use App\Models\Done;
 use App\Models\Exercice;
+use App\Models\Sesin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use function Pest\Laravel\get;
 
 class ExerciceController extends Controller
 {
@@ -41,7 +45,7 @@ class ExerciceController extends Controller
             'sesin_id' => 'required',
             'calories' => 'required|numeric',
             'location' => 'required',
-            'premium' => 'required',
+          
             'user_id' => 'required'
         ]);
 
@@ -119,11 +123,37 @@ class ExerciceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Exercice $exercice)
+    public function show(Sesin $session)
     {
         //
+        // return view('trainer.ApprovePage');
 
     }
+    public function ApprovePage(Sesin $session)
+    {
+        //
+        $user = Auth::user();
+        $TrainerSessions = Sesin::where('user_id',$user->id)->where('approve',false)->get();
+        $PublishedSessions = Sesin::where('user_id',$user->id)->where('approve',true)->get();
+      
+        return view('trainer.ApprovePage',compact('TrainerSessions','PublishedSessions'));
+
+    }
+    public function publish(Sesin $session)
+{
+    $user = Auth::user();
+
+
+    if ($session->user_id !== $user->id) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $session->update([
+        'approve' => true,
+    ]);
+
+    return back();
+}
 
     /**
      * Show the form for editing the specified resource.

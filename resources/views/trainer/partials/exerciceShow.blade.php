@@ -18,7 +18,7 @@
                     @endif
 
                 </div>
-                <div class=" flex justify-center items-center mt-[5rem] flex-wrap gap-5 ">
+                <div class=" flex pb-10 justify-center items-center mt-[5rem] flex-wrap gap-5 ">
                     @forelse ($exercices as $exercice)
                         <div
                             class="exercise-card bg-[#004f5f] text-white rounded-lg shadow-2xl overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-3xl">
@@ -50,7 +50,7 @@
 
 
                                         <div class="relative flex justify-center items-center">
-                                            <svg viewBox="0 0 24 24" class="w-6 absolute h-6 fill-current text-[#00e0d4] ">
+                                            <svg viewBox="0 0 24 24" class="w-6 absolute h-6 fill-current text-[#fbff1e] ">
                                                 <path
                                                     d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
                                                 </path>
@@ -199,7 +199,8 @@
 
                     <div>
                         <label for="time" class="block text-white font-medium mb-2">Exercise Time</label>
-                        <select required id="time" name="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <select required id="time" name="time"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                             <option value="1">1 min</option>
                             <option value="5">5 min</option>
                             <option value="10">10 min</option>

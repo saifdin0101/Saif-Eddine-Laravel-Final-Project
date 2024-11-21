@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-[#1e1e1e] overflow-x-hidden">
+<body class="bg-[#1e1e1e] roboto overflow-x-hidden">
     @auth
 
         @if (!in_array(Route::currentRouteName(), ['login', 'register', 'welcome', 'body.index']))

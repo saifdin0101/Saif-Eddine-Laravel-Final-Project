@@ -41,6 +41,7 @@ class CalendarController extends Controller
             "color" => $generateRandomColor(), // Assign a random color to each event
             "passed" => false,
             "title" => Auth::user()->name,
+            "imageUrl" => asset('storage/images/' . Auth::user()->image), // Include the user's image URL
         ];
     });
 
@@ -48,6 +49,7 @@ class CalendarController extends Controller
         "events" => $events
     ]);
 }
+
 
 
     /**

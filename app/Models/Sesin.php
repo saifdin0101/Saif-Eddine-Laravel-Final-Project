@@ -14,7 +14,8 @@ class Sesin extends Model
         'image',
         'user_id',
         'pay',
-        'premium'
+        'premium',
+        'approve'
     ];
 
 
