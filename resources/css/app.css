@@ -289,10 +289,7 @@ color: #05a59d;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #40f9ff, #008888);
-  box-shadow: 0 0 8px #40f9ff; 
-}
+
 scrollbar-width: thin;
 scrollbar-color: #00e0d4 #002222; 
 .file-upload-container {
