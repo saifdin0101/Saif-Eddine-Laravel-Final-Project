@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercice;
 use App\Models\Sesin;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Checkout\Session;
@@ -28,59 +29,82 @@ class SessionController extends Controller
      */
     public function create()
     {
-
         $events = Sesin::all();
-
-        // Map the events to the necessary data structure for FullCalendar
+    
         $events = $events->map(function ($e) {
             return [
-                "start" => $e->start_time,  // Use the start_time field
-                "end" => $e->end_time,      // Use the end_time field
-                "color" => "#fcc102",       // Optional: color of the event (can be customized)
-                "passed" => false,          // You can add logic to determine if an event has passed
-                "title" => $e->name,        // Set the event title (or any other info you want to display)
+                "start" => $e->start_time,  
+                "end" => $e->end_time,     
+                "color" => "#40f9ff",       
+                "passed" => false,          
+                "title" => $e->name,        
             ];
         });
-
-        // Return the events in a JSON response for FullCalendar
+    
         return response()->json([
             "events" => $events
         ]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+{
+    // Validate the incoming request
+    $request->validate([
+        'name' => 'required',
+        'start_time' => 'required',
+        'end_time' => 'required',
+        'image' => 'required',
+        'user_id' => 'required',
+    ]);
 
+    // Parse the start and end times
+    $startTime = Carbon::parse($request->start_time);
+    $endTime = Carbon::parse($request->end_time);
 
-        request()->validate([
-            'name' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'image' => 'required',
-            'user_id' => 'required',
-
-        ]);
-
-        $image = $request->image;
-        $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
-        $image->move(storage_path('app/public/images'), $imageName);
-
-        Sesin::create([
-            'name' => $request->name,
-            'start_time' => $request->start_time . ":00",
-            'end_time' => $request->end_time . ":00",
-            'image' => $imageName,
-            'pay' => false,
-            'user_id' => $request->user_id,
-            'premium' => $request->premium == "on" ? true : false
-        ]);
-
-        return back();
+    // Check if the start and end times are in the past
+    if ($startTime->isPast() && $endTime->isPast()) {
+        return back()->with('error', 'You could travel to the past, be my guest :)');
     }
+
+    // Check for overlapping sessions
+    $existingSession = Sesin::where(function ($query) use ($startTime, $endTime) {
+        $query->whereBetween('start_time', [$startTime, $endTime])
+              ->orWhereBetween('end_time', [$startTime, $endTime])
+              ->orWhere(function ($query) use ($startTime, $endTime) {
+                  $query->where('start_time', '<', $startTime)
+                        ->where('end_time', '>', $endTime);
+              });
+    })->exists();
+
+    // If there is an overlap, return with an error
+    if ($existingSession) {
+        return back()->with('error', 'The selected time range is already booked.');
+    }
+
+    // Handle the image upload
+    $image = $request->image;
+    $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
+    $image->move(storage_path('app/public/images'), $imageName);
+
+    // Store the session
+    Sesin::create([
+        'name' => $request->name,
+        'start_time' => $request->start_time . ":00",
+        'end_time' => $request->end_time . ":00",
+        'image' => $imageName,
+        'pay' => false,
+        'user_id' => $request->user_id,
+        'premium' => $request->premium == "on" ? true : false,
+    ]);
+
+    return back()->with('success', 'Session created successfully!');
+}
+
+    
     public function checkout(Request $request)
     {
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
@@ -137,10 +161,10 @@ class SessionController extends Controller
         //
         $user = Auth::user();
         $exercices = Exercice::where('sesin_id', $session->id)->get();
-        $owner= Sesin::where('user_id',$user->id)->get();
+        $owner = Sesin::where('user_id', $user->id)->get();
         // $owner = Sesin::where('user_id', $user->id)->where('sesin_id', $session->id)->get();
         // dd($test);
-        return view('trainer.partials.exerciceShow', compact('session', 'exercices','session'));
+        return view('trainer.partials.exerciceShow', compact('session', 'exercices', 'session'));
     }
 
     /**

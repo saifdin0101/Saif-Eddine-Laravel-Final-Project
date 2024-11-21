@@ -230,9 +230,13 @@
     background-repeat: no-repeat; 
   }
   .img7{
-    background-image: url('../imageBG/parentimg.jpg');
+    background-image: 
+    linear-gradient(273deg, rgba(255,255,255,0) 21%, rgba(1,228,214,0.9) 100%), 
+      url('../imageBG/parentimg.jpg');
     background-size: cover; 
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    
+     
   }
   .img8{
     background-image: url('../imageBG/bg2.jpg');
@@ -407,13 +411,17 @@ label svg {
   background: linear-gradient(279deg, rgba(0,0,0,1) 50%, rgba(2,255,239,1) 100%);
 
 }
+input:focus {
+  border: none !important;
+}
+
 .gg3 {
 
 
-  background: linear-gradient(279deg, rgba(255,255,255,1) 0%, rgba(0,255,239,1) 100%);
+  background: linear-gradient(279deg, rgba(255,255,255,1) 45%, rgba(143,255,248,1) 47%, rgba(0,255,239,1) 100%);
   -webkit-background-clip: text; /* For WebKit-based browsers */
   background-clip: text; /* For other modern browsers */
-  color: transparent; /* Make the text color transparent to show the gradient */
+  color: transparent;
   cursor: default;
 }
 .gg3:hover{

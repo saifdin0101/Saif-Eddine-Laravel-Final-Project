@@ -34,7 +34,7 @@
                                 </div>
                                 <div
                                     class="relative   z-10 p-4 backdrop-blur-md rounded-full shadow-lg text-white font-thin transition-transform group-hover:translate-x-2">
-                                    Check Profile and See Other Sessions
+                                    {{ $session->user->name }}
                                 </div>
                             </div>
 
@@ -159,12 +159,12 @@
             
                     <div>
                         <label for="start" class="block text-white font-medium mb-2">Start Date</label>
-                        <input id="start" name="start_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" required>
+                        <input id="start" name="start_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" >
                     </div>
             
                     <div>
                         <label for="end" class="block text-white font-medium mb-2">End Date</label>
-                        <input id="end" name="end_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" required>
+                        <input id="end" name="end_time" type="datetime-local" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] bg-white text-gray-900" >
                     </div>
             
                     <div>

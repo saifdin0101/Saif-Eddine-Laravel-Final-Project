@@ -22,44 +22,69 @@ class CalendarController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-        
-        
-        $events = Sesin::all();
+{
+    // Fetch all calendar events
+    $events = Calendar::all();
 
-        $events = $events->map(function ($e) {
-            return [
-                "start" => $e->start_time,
-                "end" => $e->end_time,
-                "color" => "#fcc102",
-                "passed" => false,
-                "title" => Auth::user()->name,
-            ];
-        });
+    // Function to generate a random color
+    $generateRandomColor = function () {
+        // Generates a random color in hex format
+        return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+    };
 
-        return response()->json([
-            "events" => $events
-        ]);
-    }
+    // Map events and assign random colors
+    $events = $events->map(function ($e) use ($generateRandomColor) {
+        return [
+            "id" => $e->id, // Ensure we have the event id for updating
+            "start" => $e->start,
+            "end" => $e->end,
+            "color" => $generateRandomColor(), // Assign a random color to each event
+            "passed" => false,
+            "title" => Auth::user()->name,
+        ];
+    });
+
+    return response()->json([
+        "events" => $events
+    ]);
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-        request()->validate([
-            "start"=>"required",
-            "end"=>"required"
+      
+        $request->validate([
+            "start" => "required|date",
+            "end" => "required|date|after:start",
         ]);
+    
+        $overlappingEvent = Calendar::where(function($query) use ($request) {
+            $query->whereBetween('start', [$request->start, $request->end])
+                  ->orWhereBetween('end', [$request->start, $request->end])
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('start', '<', $request->start)
+                            ->where('end', '>', $request->end);
+                  });
+        })->exists();
+    
+       
+        if ($overlappingEvent) {
+            return back()->with(['error','This time slot is already been taken . Please choose a different time.']);
+        }
+    
 
         Calendar::create([
-            "start"=>$request->start . ":00",
-            "end"=>$request->end . ":00",
+            "start" => $request->start . ":00",
+            "end" => $request->end . ":00",
         ]);
-        return back();
+    
+
+        return back()->with('success', 'Event created successfully.');
     }
+    
 
     /**
      * Display the specified resource.

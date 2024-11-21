@@ -12,7 +12,7 @@ window.axios = axios;
 
 
 document.addEventListener('DOMContentLoaded', async function() {
-    let response = await axios.get("/calendar/create")
+    let response = await axios.get("/session/create")
     let events = response.data.events
 
     let nowDate = new Date()
@@ -24,23 +24,21 @@ document.addEventListener('DOMContentLoaded', async function() {
         `${nowDate.getFullYear()}-${month < 10 ? "0"+month : month}-${day < 10 ? "0"+day : day}T${hours < 10 ? "0"+hours : hours}:${minutes < 10 ? "0"+minutes : minutes}:00`
     start.min = minTimeAllowed;
 
+    // Filter out events that have already passed (based on their start time)
+    events = events.filter(event => new Date(event.start) > nowDate);
 
     var myCalendar = document.getElementById('calendar');
 
-
     var calendar = new FullCalendar.Calendar(myCalendar, {
-
         headerToolbar: {
             left: 'dayGridMonth,timeGridWeek,timeGridDay',
             center: 'title',
             right: 'listMonth,listWeek,listDay'
         },
 
-
         views: {
             listDay: { // Customize the name for listDay
                 buttonText: 'Day Session',
-
             },
             listWeek: { // Customize the name for listWeek
                 buttonText: 'Week Session'
@@ -57,31 +55,24 @@ document.addEventListener('DOMContentLoaded', async function() {
             dayGridMonth: {
                 buttonText: "Month",
             },
-
         },
 
-
-        initialView: "timeGridWeek", // initial view  =   l view li kayban  mni kan7ol l  calendar
-        slotMinTime: "09:00:00", // min  time  appear in the calendar
-        slotMaxTime: "19:00:00", // max  time  appear in the calendar
+        initialView: "timeGridWeek", // initial view  =   the view displayed when the calendar opens
+        slotMinTime: "09:00:00", // Minimum time visible in the calendar
+        slotMaxTime: "19:00:00", // Maximum time visible in the calendar
         nowIndicator: true, 
         selectable: false, 
         selectMirror: true,
-        selectOverlap: true, 
+        selectOverlap: false, 
         weekends: true,
 
-
-
-        events: events,
+        events: events, // Use the filtered events (only future sessions)
 
         selectAllow: (info) => {
-
             return info.start >= nowDate;
         },
 
         select: (info) => {
-
-
             if (info.end.getDate() - info.start.getDate() > 0 && !info.allDay ) {
                 return
             }
@@ -90,17 +81,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (info.allDay) {
                 start.value = info.startStr+" 09:00:00"
                 end.value = info.startStr+" 19:00:00"   
-                
-            }else{     
+            } else {     
                 start.value = info.startStr.slice(0, info.startStr.length - 6)
                 end.value = info.endStr.slice(0, info.endStr.length - 6)   
             }
 
             submitEvent.click()
         }
-
-
-
     });
 
     calendar.render();
