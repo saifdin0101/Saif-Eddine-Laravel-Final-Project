@@ -69,8 +69,10 @@ public function DoneExercice()
 public function userBodyInfo (){
     return $this->hasMany(Body::class);
 }
-// public function sessions()
-// {
-//     return $this->belongsToMany(Sesin::class,'Buy_Sessions')->withPivot('pay');
-// }
+public function sessions()
+{
+    return $this->belongsToMany(Sesin::class, 'Buy_Sessions', 'user_id', 'sesin_id')->withPivot('pay')->withTimestamps();
+}
+
+
 }

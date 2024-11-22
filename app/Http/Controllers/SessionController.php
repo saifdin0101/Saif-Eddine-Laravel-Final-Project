@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BuySession;
 use App\Models\Exercice;
 use App\Models\Sesin;
 use Carbon\Carbon;
@@ -19,11 +20,14 @@ class SessionController extends Controller
      */
     public function index()
     {
-        //
-
-        $sessions = Sesin::where('approve',true)->get();
-        return view('trainer.session', compact('sessions'));
+      
+    $sessions = Sesin::where('approve', true)->get();
+    $user = Auth::user();
+    $payedSessions = $user->sessions()->wherePivot('pay', true)->select('sesins.id')->pluck('id')->toArray();
+    
+        return view('trainer.session', compact('sessions', 'payedSessions'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -62,16 +66,15 @@ class SessionController extends Controller
         'user_id' => 'required',
     ]);
 
-    // Parse the start and end times
+ 
     $startTime = Carbon::parse($request->start_time);
     $endTime = Carbon::parse($request->end_time);
 
-    // Check if the start and end times are in the past
+
     if ($startTime->isPast() && $endTime->isPast()) {
         return back()->with('error', 'You could travel to the past, be my guest :)');
     }
 
-    // Check for overlapping sessions
     $existingSession = Sesin::where(function ($query) use ($startTime, $endTime) {
         $query->whereBetween('start_time', [$startTime, $endTime])
               ->orWhereBetween('end_time', [$startTime, $endTime])
@@ -81,17 +84,17 @@ class SessionController extends Controller
               });
     })->exists();
 
-    // If there is an overlap, return with an error
+ 
     if ($existingSession) {
         return back()->with('error', 'The selected time range is already booked.');
     }
 
-    // Handle the image upload
+
     $image = $request->image;
     $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
     $image->move(storage_path('app/public/images'), $imageName);
 
-    // Store the session
+    
     Sesin::create([
         'name' => $request->name,
         'start_time' => $request->start_time . ":00",
@@ -107,53 +110,57 @@ class SessionController extends Controller
 }
 
     
-    public function checkout(Request $request)
-    {
-        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+public function checkout(Request $request, Sesin $session)
+{
+    $user = Auth::user();
+    
 
-        // Assuming you have the session ID from the request
-        $sessionId = $request->sesin_id;
-        $userId = $request->user_id;
+//    
+    $user->sessions()->attach($request->sesin_id, ['pay' => false]);
+    // dd($request->sesin_id);
+ 
+    \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
-        $session = \Stripe\Checkout\Session::create([
-            'line_items' => [
-                [
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => ['name' => 'Buy Section'],
-                        'unit_amount' => 1500,
-                    ],
-                    'quantity' => 1,
+    
+    $checkoutSession = \Stripe\Checkout\Session::create([
+        'line_items' => [
+            [
+                'price_data' => [
+                    'currency' => 'usd',
+                    'product_data' => ['name' => 'Buy Session'],
+                    'unit_amount' => 1500,
                 ],
+                'quantity' => 1,
             ],
-            'mode' => 'payment',
-            'success_url' => route('session.paymentSuccess', ['session_id' => $sessionId, 'user_id' => $userId]),
-            'cancel_url' => route('dashboard'),
-        ]);
+        ],
+        'mode' => 'payment', 
+        'success_url' => route('session.paymentSuccess',['sesin_id' => $request->sesin_id]),
+        'cancel_url' => route('dashboard'),
+    ]);
 
-        return redirect()->away($session->url);
+    // Redirect the user to the Stripe Checkout page
+    return redirect()->away($checkoutSession->url);
+}
+    
+
+public function paymentSuccess(Request $request)
+{
+    $user = Auth::user();
+    $sesin_id = $request->sesin_id;
+    
+    
+    $trainerRequest = $user->sessions()->wherePivot('sesin_id', $sesin_id)->first();
+
+    if ($trainerRequest) {
+      
+        $user->sessions()->updateExistingPivot($sesin_id, ['pay' => true]);
+
+        return redirect()->route('session.index')->with('success', 'Get Stronger With Our Sessions.');
     }
-    public function paymentSuccess(Request $request)
-    {
-        $user = Auth::user();
 
+    return redirect()->route('dashboard')->with('error', 'Something went wrong, try again.');
+}
 
-        $sessionId = $request->query('session_id');
-        $userId = $request->query('user_id');
-
-
-
-
-        $trainerRequest = Sesin::where('user_id', $userId)->where('id', $sessionId)->first();
-
-        if ($trainerRequest) {
-            $trainerRequest->update(['pay' => true]);
-
-            return redirect()->route('dashboard')->with('success', 'Get Stronger With Our Sessions.');
-        }
-
-        return redirect()->route('dashboard')->with('error', 'Something went wrong, try again.');
-    }
 
     /**
      * Display the specified resource.

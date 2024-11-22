@@ -25,8 +25,8 @@ class Sesin extends Model
     public function users () {
         return $this->belongsToMany(User::class,'Joins', 'user_id', 'sesin_id')->withTimestamps();;
     }
-    // public function userss()
-    // {
-    //     return $this->belongsToMany(User::class ,'Buy_Sessions')->withPivot('pay');
-    // }
+    public function buysession()
+{
+    return $this->belongsToMany(User::class, 'Buy_Sessions', 'user_id', 'sesin_id')->withPivot('pay')->withTimestamps();
+}
 }

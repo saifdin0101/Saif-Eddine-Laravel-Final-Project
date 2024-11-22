@@ -93,15 +93,26 @@
                                             </form>
                                         @endif
                                     @else
-                                        <form method="post" action="{{ route('session.checkout') }}">
-                                            @csrf
-                                            <input name="sesin_id" value="{{ $session->id }}" type="hidden">
-                                            <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
-                                            <button
-                                                class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
-                                                Buy The Session
-                                            </button>
-                                        </form>
+                                        @if (in_array($session->id, $payedSessions))
+                                            <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
+                                                href="{{ route('session.show', $session->id) }}">
+                                                Check Out Our Exercises
+                                                <div
+                                                    class="bg-white rounded-full px-1 text-black flex justify-center items-center">
+                                                    <i class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
+                                                </div>
+                                            </a>
+                                        @else
+                                            <form method="post" action="{{ route('session.checkout') }}">
+                                                @csrf
+                                                <input name="sesin_id" value="{{ $session->id }}" type="hidden">
+                                                <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                                <button
+                                                    class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                                    Buy The Session
+                                                </button>
+                                            </form>
+                                        @endif
                                     @endif
                                 @endif
 
