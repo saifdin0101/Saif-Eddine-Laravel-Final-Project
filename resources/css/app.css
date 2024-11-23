@@ -193,7 +193,36 @@
   html {
     scroll-behavior: smooth;
   }
-  
+  .dash1{
+    background-image: url('../imageBG/james.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  .dash2{
+    background-image: url('../imageBG/tom.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  .dash3{
+    background-image: url('../imageBG/ariana.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  .dash4{
+    background-image: url('../imageBG/densel.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
+  .dash5{
+    background-image: url('../imageBG/jorge.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+  }
   .img1{
     background-image: url('../imageBG/img1.jpg');
     background-size: cover; 
@@ -288,7 +317,10 @@ color: #05a59d;
   background: linear-gradient(to bottom, #00e0d4, #008080, #002222);
   border-radius: 10px;
 }
-
+.main-color-gradiant{
+  background: rgb(8,144,177);
+background: linear-gradient(0deg, rgba(8,144,177,1) 0%, rgba(0,0,0,1) 100%);
+}
 
 scrollbar-width: thin;
 scrollbar-color: #00e0d4 #002222; 
