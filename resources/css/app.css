@@ -321,7 +321,10 @@ color: #05a59d;
   background: rgb(8,144,177);
 background: linear-gradient(0deg, rgba(8,144,177,1) 0%, rgba(0,0,0,1) 100%);
 }
-
+.second-color-gradiant{
+  background: rgb(8,144,177);
+background: linear-gradient(0deg, rgba(8,144,177,1) 0%, rgb(101, 200, 247) 100%);
+}
 scrollbar-width: thin;
 scrollbar-color: #00e0d4 #002222; 
 .file-upload-container {

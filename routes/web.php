@@ -8,6 +8,11 @@ use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TrainerController;
+use App\Models\Body;
+use App\Models\Exercice;
+use App\Models\Sesin;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,7 +20,21 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::get('/dashboard', function () {
+    $user = Auth::user();
+    if ($user->role == 'client' || $user->role == 'trainer') {
+        $userbody = Body::where('user_id',$user->id)->first();
+        $usercalories = $userbody->calories ;
+        $userwight = $userbody->weight ;
+        $treetrainers = User::where('role', 'trainer')->take(3)->get();
+        $forsessions = Sesin::take(4)->get();
+        $twoexercices = Exercice::take(2)->get();
+        return view('dashboard',compact('usercalories','userwight','treetrainers','forsessions','twoexercices'));
+    }
     return view('dashboard');
+    
+   
+    
+    return view('dashboard',compact('usercalories','userwight','treetrainers','forsessions'));
 })->middleware(['auth', 'verified', 'BodyInformation'])->name('dashboard');
 
 Route::middleware('auth', 'BodyInformation')->group(function () {
