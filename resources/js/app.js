@@ -92,3 +92,32 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     calendar.render();
 })
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Automatically dismiss alerts after 3 seconds
+    const alerts = document.querySelectorAll('.alert-container');
+    alerts.forEach(alert => {
+        // Delay fade-out to ensure proper rendering
+        setTimeout(() => {
+            alert.classList.add('fade-out');
+            setTimeout(() => alert.remove(), 300); // Remove after fade-out
+        }, 3500); // Display for 3 seconds, then start fade-out
+    });
+});
+
+// Dismiss alert when clicking close button
+function dismissAlert(id) {
+    const alert = document.getElementById(id);
+    if (alert) {
+        alert.classList.add('fade-out');
+        setTimeout(() => alert.remove(), 300); // Remove after fade-out
+    }
+}
+
+
+
+

@@ -4,7 +4,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton+SC&display=swap" rel="stylesheet">
 <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
@@ -22,6 +24,45 @@
 </head>
 
 <body class="bg-[#1e1e1e] roboto overflow-x-hidden">
+    @if (session('success'))
+    <div class="alert-container" id="alert-success">
+        <div class="alert-content bg-green-500 text-white">
+            <i class="bi bi-check-circle alert-icon"></i>
+            <div>{{ session('success') }}</div>
+            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-success')">&times;</button>
+        </div>
+        <div class="alert-progress">
+            <div class="alert-progress-bar bg-green-700"></div>
+        </div>
+    </div>
+@endif
+
+@if (session('warning'))
+    <div class="alert-container" id="alert-warning">
+        <div class="alert-content bg-yellow-500 text-white">
+            <i class="bi bi-exclamation-triangle alert-icon"></i>
+            <div>{{ session('warning') }}</div>
+            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-warning')">&times;</button>
+        </div>
+        <div class="alert-progress">
+            <div class="alert-progress-bar bg-yellow-700"></div>
+        </div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert-container" id="alert-error">
+        <div class="alert-content bg-red-500 text-white">
+            <i class="bi bi-x-circle alert-icon"></i>
+            <div>{{ session('error') }}</div>
+            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-error')">&times;</button>
+        </div>
+        <div class="alert-progress">
+            <div class="alert-progress-bar bg-red-700"></div>
+        </div>
+    </div>
+@endif
+
     @auth
 
         @if (!in_array(Route::currentRouteName(), ['login', 'register', 'welcome', 'body.index']))
@@ -57,20 +98,23 @@
                 </div>
 
                 <nav class="flex-1 space-y-4 p-2 overflow-y-auto overflow-x-hidden relative">
-                    <a href="/dashboard"
-                        class="flex items-center rounded-lg px-3 py-3 text-base font-medium hover:bg-gray-500 h-[50px]  justify-center   transition-colors duration-200"
-                        :class="{ 'justify-center': !expanded }">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 absolute left-5 top-[1rem] "
-                            :class="{ 'mr-3': expanded }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                        </svg>
-                        <span x-show="expanded" x-transition:enter="transition ease-out duration-300 delay-150"
-                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
-                            x-transition:leave-end="opacity-0"
-                            class="whitespace-nowrap absolute left-[5rem] top-[1rem]">Home</span>
-                    </a>
+                    @if (Auth::user()->role == 'trainer' || Auth::user()->role == 'client')
+                        <a href="/dashboard"
+                            class="flex items-center rounded-lg px-3 py-3 text-base font-medium hover:bg-gray-500 h-[50px]  justify-center   transition-colors duration-200"
+                            :class="{ 'justify-center': !expanded }">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-7 w-7 flex-shrink-0 absolute left-5 top-[1rem] " :class="{ 'mr-3': expanded }"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            <span x-show="expanded" x-transition:enter="transition ease-out duration-300 delay-150"
+                                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+                                x-transition:leave-end="opacity-0"
+                                class="whitespace-nowrap absolute left-[5rem] top-[1rem]">Home</span>
+                        </a>
+                    @endif
 
 
 
@@ -141,9 +185,10 @@
                     @if (Auth::user()->role == 'admin')
                         <a href="/admin"
                             class="flex items-center rounded-lg px-3  text-base font-medium    justify-center   transition-colors duration-200"
-                            :class="{ 'justify-center': !expanded } ">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 absolute bottom-[5rem] left-5"
-                                :class="{ 'mr-3': expanded }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            :class="{ 'justify-center': !expanded }">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-7 w-7 flex-shrink-0 absolute bottom-[5rem] left-5" :class="{ 'mr-3': expanded }"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
@@ -153,38 +198,33 @@
                                 x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                                 class="whitespace-nowrap absolute bottom-[5rem] left-[5rem]  ">Admin Section</span>
                         </a>
-                        
-                            
-                    
-                        
-                    
-                            
                     @endif
-                    @if (Auth::user()->role =='trainer')
-                    <a href="/ApprovePage"
-                        class="flex items-center rounded-lg px-3 py-3 text-base font-medium  h-[50px] justify-center transition-colors duration-200"
-                        :class="{ 'justify-center': !expanded }">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0 absolute bottom-[5rem] left-5" 
-                            :class="{ 'mr-3': expanded }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12l2 2l4-4" /> 
-                            <circle cx="12" cy="12" r="10" /> 
-                        </svg>
-                        <span x-show="expanded" x-transition:enter="transition ease-out duration-300 delay-150"
-                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="whitespace-nowrap absolute bottom-[5rem] left-[5rem]">UnPublished Sessions</span>
-                    </a>
-                        
+                    @if (Auth::user()->role == 'trainer')
+                        <a href="/ApprovePage"
+                            class="flex items-center rounded-lg px-3 py-3 text-base font-medium  h-[50px] justify-center transition-colors duration-200"
+                            :class="{ 'justify-center': !expanded }">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-7 w-7 flex-shrink-0 absolute bottom-[5rem] left-5" :class="{ 'mr-3': expanded }"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2l4-4" />
+                                <circle cx="12" cy="12" r="10" />
+                            </svg>
+                            <span x-show="expanded" x-transition:enter="transition ease-out duration-300 delay-150"
+                                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                                class="whitespace-nowrap absolute bottom-[5rem] left-[5rem]">UnPublished Sessions</span>
+                        </a>
                     @endif
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
                             class="w-full flex items-center rounded-lg px-3 py-3 text-base font-medium hover:bg-gray-500 h-[50px]  justify-center   transition-colors duration-200"
                             :class="{ 'justify-center': !expanded }">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 flex-shrink-0  absolute bottom-6 left-5"
-                                :class="{ 'mr-3': expanded }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-7 w-7 flex-shrink-0  absolute bottom-6 left-5" :class="{ 'mr-3': expanded }"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                             </svg>
@@ -196,7 +236,7 @@
                         </button>
                     </form>
                 </div>
-                
+
             </div>
         @endif
 

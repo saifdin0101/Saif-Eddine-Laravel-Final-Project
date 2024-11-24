@@ -72,7 +72,7 @@ class SessionController extends Controller
 
 
         if ($startTime->isPast() && $endTime->isPast()) {
-            return back()->with('error', 'You could travel to the past, be my guest :)');
+            return back()->with('error', ' If You could travel to the past, be my guest :)');
         }
 
         $existingSession = Sesin::where(function ($query) use ($startTime, $endTime) {
@@ -213,7 +213,7 @@ class SessionController extends Controller
         'image' => $imageName,
     ]);
 
-    return redirect()->back()->with('success', 'Session updated successfully!');
+    return redirect()->route('session.index')->with('success', 'Session updated successfully!');
 }
 
 
@@ -224,7 +224,7 @@ class SessionController extends Controller
     {
         //
         $session->delete();
-        return back();
+        return back()->with('success','Session been deleted Successfully');
     }
     public function joinSession(Request $request, Sesin $session)
     {
@@ -239,6 +239,6 @@ class SessionController extends Controller
 
         $user->exerciceSesins()->attach($session->id);
 
-        return redirect()->back()->with('success', 'You have successfully joined the session!');
+        return redirect()->back()->with('success', 'You have joined to  the session successfully ! ');
     }
 }

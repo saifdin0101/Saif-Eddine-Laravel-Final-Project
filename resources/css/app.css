@@ -236,6 +236,57 @@
     background-clip: text;
     text-fill-color: transparent;
 }
+.alert-container {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 400px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.alert-container.fade-out {
+  opacity: 0;
+  top: 0;
+}
+
+.alert-content {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.alert-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.alert-progress {
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.alert-progress-bar {
+  height: 100%;
+  background-color: #ffffff;
+  animation: progressBar 3s linear forwards;
+}
+
+@keyframes progressBar {
+  from {
+      width: 100%;
+  }
+  to {
+      width: 0%;
+  }
+}
 
   .img2{
     background-image: url('../imageBG/boxing2.jpg');

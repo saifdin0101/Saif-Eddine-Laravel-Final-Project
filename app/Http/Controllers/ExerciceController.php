@@ -67,7 +67,7 @@ class ExerciceController extends Controller
             'user_id' => $request->user_id,
         ]);
 
-        return back();
+        return back()->with('success','Exercice Been Created Succefully !!');
     }
 
     public function favorite(Request $request)
@@ -83,7 +83,7 @@ class ExerciceController extends Controller
 
         $user->favoriteExercises()->attach($exoID);
 
-        return back()->with('success', 'Exercice Added Succefully');
+        return back()->with('success', 'Exercice Added to the favorite list Succefully');
     }
     public function done(Request $request)
     {
@@ -92,7 +92,7 @@ class ExerciceController extends Controller
 
 
         if ($user->DoneExercice()->where('exercice_id', $exoID)->exists()) {
-            return back()->with('error', 'Exercise Already Done');
+            return back()->with('error', 'Exercise Already marked as Done');
         }
 
 
@@ -116,7 +116,7 @@ class ExerciceController extends Controller
 
         $user->DoneExercice()->attach($exoID);
 
-        return back()->with('success', 'Exercice Added Successfully');
+        return back()->with('success', 'Exercice Added to the DoneList Successfully');
     }
 
 
@@ -152,7 +152,7 @@ class ExerciceController extends Controller
         'approve' => true,
     ]);
 
-    return back();
+    return back()->with('success','Session Been Published Succefully');
 }
 
     /**
@@ -178,7 +178,7 @@ class ExerciceController extends Controller
     {
         //
         $exercice->delete();
-        return back();
+        return back()->with('success','Exercice Removed Succefully !!!');
 
 
     }
@@ -195,6 +195,6 @@ class ExerciceController extends Controller
             
             $user->favoriteExercises()->detach($exoID);
         }
-        return back()->with('success', 'Ecercice Been Removed From Favorite');
+        return back()->with('success', 'Exercice Been Removed From Favorite');
     }
 }

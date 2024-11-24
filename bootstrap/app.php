@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\BodyMiddleware;
 use App\Http\Middleware\CheckOutMiddleware;
+use App\Http\Middleware\clientMiddleware;
 use App\Http\Middleware\SeenBodyMiddleware;
 use App\Http\Middleware\SessionMiddleware;
 use Illuminate\Foundation\Application;
@@ -24,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'CheckOut' => CheckOutMiddleware::class ,
             'Session' => SessionMiddleware::class ,
             'Favorite' => SessionMiddleware::class ,
+            'Client' => clientMiddleware::class ,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

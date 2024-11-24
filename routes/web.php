@@ -35,14 +35,14 @@ Route::get('/dashboard', function () {
    
     
     return view('dashboard',compact('usercalories','userwight','treetrainers','forsessions'));
-})->middleware(['auth', 'verified', 'BodyInformation'])->name('dashboard');
+})->middleware(['auth', 'verified', 'BodyInformation'])->name('dashboard')->middleware('Client');
 
 Route::middleware('auth', 'BodyInformation')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::middleware('admin')->group(function () {
-        Route::get('/admin', [AdminController::class, 'index']);
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
         Route::delete('/admin/delete/{user}', [AdminController::class, 'destroy'])->name('admin.delete');
         Route::post('/user/{id}/restore', [AdminController::class, 'restore'])->name('user.restore');
         Route::put('/admin/update/{user}', [AdminController::class, 'update'])->name('admin.update');

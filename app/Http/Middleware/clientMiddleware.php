@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class clientMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = User::Where('id',auth()->user()->id)->first();
-
-
-        if ($user && $user->role =='admin') {
+        if (Auth::user()->role == 'client' || Auth::user()->role == 'trainer') {
             return $next($request);
         }
-        return back()->with('error', ' you are not allowed to go to this page');
-        
+        return redirect()->route('admin');
+       
     }
 }
