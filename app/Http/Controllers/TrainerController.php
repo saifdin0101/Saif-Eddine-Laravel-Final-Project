@@ -108,10 +108,11 @@ class TrainerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id , Trainer $trainer)
+    public function show(string $id , User $trainer)
     {
         //compact('trainer')
-        return view('trainer.trainerShow');
+        
+        return view('trainer.trainerShow',compact('trainer'));
     }
 
     /**

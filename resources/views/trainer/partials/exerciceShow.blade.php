@@ -38,7 +38,18 @@
                                     Recomanded
                                 </div>
                             @endif
+                            <div class="text-2xl flex gap-4 absolute top-[40%] right-2">
+                                @if (Auth::user()->role == 'trainer' && $session->user_id == Auth::user()->id)
+                                    <form class="text-red-500" method="post"
+                                        action="{{ route('exercice.destroy', $exercice->id) }}">
+                                        @method('DELETE')
+                                        @csrf
 
+                                        <button><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                @endif
+
+                            </div>
                             <div class="p-6 space-y-4 relative">
 
                                 <div class="text-xl font-bold">{{ $exercice->name }}</div>

@@ -9,9 +9,9 @@
    
 </head>
 
-<div class="min-h-screen img7 flex items-center justify-center  p-6">
+<div class="min-h-screen  flex items-center justify-center  p-6">
     <form enctype="multipart/form-data" method="POST" action="{{ route('register') }}" 
-          class="w-full  max-w-md gg2 text-white rounded-2xl gg p-8">
+          class="w-full  max-w-md  text-white rounded-2xl gg p-8">
         @csrf
 
         <!-- WorkOut-Now Title -->
