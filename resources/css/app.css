@@ -229,7 +229,14 @@
     background-repeat: no-repeat; 
     
   }
-  
+  .main-text {
+    background: linear-gradient(to right, white, #0890b1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
   .img2{
     background-image: url('../imageBG/boxing2.jpg');
     background-size: cover; 
@@ -250,10 +257,14 @@
     background-repeat: no-repeat; 
     
   }
-  
+  .inv{
+    background-image: url('../imageBG/invfriend1.png');
+    background-size:contain;
+    background-repeat: no-repeat; 
+  }
   .img5{
     background-image: url('../imageBG/caros.jpg');
-    background-size: cover; 
+    background-size:cover;
     background-repeat: no-repeat; 
     
   }
@@ -432,6 +443,7 @@ label svg {
     transform: scale(1);
   }
 }
+
 /*trainer card*/ 
 .card {
   width: 280px;
