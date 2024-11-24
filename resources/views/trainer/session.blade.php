@@ -26,6 +26,7 @@
                             <img class="h-full w-full hover:scale-105 transition-transform duration-700 rounded-2xl"
                                 src="{{ asset('storage/images/' . $session->image) }}" alt="">
 
+
                             <!-- Profile and Session Check -->
                             <div class="flex gap-5 absolute top-5 left-5">
                                 <div class="h-[50px] w-[50px] rounded-full border-2 border-white">
@@ -55,6 +56,26 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (Auth::user()->id == $session->user_id)
+                                <div class="text-2xl flex gap-4 absolute bottom-2 right-6">
+                                    <div>
+                                        <form class="text-red-500" method="post"
+                                            action="{{ route('session.destroy', $session->id) }}">
+                                            @method('DELETE')
+                                            @csrf
+
+                                            <button><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                    <div>
+
+
+                                        <a class="text-green-500" href="{{ route('session.edit', $session->id) }}"> <i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+
+                                    </div>
+                                </div>
+                            @endif
 
                             <!-- Session Info -->
                             <div class="flex flex-col gap-10 absolute bottom-10 left-5">

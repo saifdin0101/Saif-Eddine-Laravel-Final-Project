@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/auth/profilee/{user}',[AuthProfileController::class,'show'])->name('auth.profilee');
     Route::get('/ApprovePage',[ExerciceController::class,'ApprovePage'])->name('ApprovePage');
     Route::put('/ApprovePage/update/{session}',[ExerciceController::class,'publish'])->name('ApprovePage.publish');
-
+    Route::put('session/update/{session}',[SessionController::class,'update'])->name('session.update');
     // Route::get('/calendar/create', [CalendarController::class, 'create'])->name('calender.create');
 
 
