@@ -243,6 +243,16 @@
     background-repeat: no-repeat; 
     
   }
+  /* .sessionbg{
+    background: radial-gradient(circle, rgba(8,144,177,1) 0%, rgba(0,0,0,0.7259278711484594) 41%);
+
+  } */
+  .session{
+    background-image: url('../imageBG/session.png');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    
+  }
   
   .img3{
     background-image: url('../imageBG/outside3.jpg');

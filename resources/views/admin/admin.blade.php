@@ -5,10 +5,10 @@
         <div class="sidebar w-[6rem]"></div>
         <div class="bg-[#1f1f1f] w-full h-[100vh] rounded-[90px] relative">
             <div class=" h-[25rem] w-[25rem] relative flex  justify-center items-center">
-                <h1 class="text-2xl absolute left-7 top-10 ">Our News Trainers</h1>
+                <h1 data-aos-once="false" data-aos-delay="50" data-aos="fade-right" class="text-2xl absolute left-7 top-10 ">Our News Trainers</h1>
 
-                <div class="flex flex-col gap-2 text-[#717071] absolute left-[10px] bottom-0">
-                    <div class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[90px] items-center">
+                <div  class="flex flex-col gap-2 text-[#717071] absolute left-[10px] bottom-0">
+                    <div data-aos-once="false" data-aos-delay="100" data-aos="fade-left" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[90px] items-center">
                         <div class="flex gap-2 justify-center items-center">
                             <div class="h-[50px] w-[50px] rounded-full dash1 "></div>
                             <div>Rayn Break</div>
@@ -17,7 +17,7 @@
                         <div class="flex">3 <div class="text-xs">Yesrs Of Exp</div>
                         </div>
                     </div>
-                    <div class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[80px] items-center">
+                    <div data-aos-once="false" data-aos-delay="130" data-aos="fade-right" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[80px] items-center">
                         <div class="flex gap-2 justify-center items-center">
                             <div class="h-[50px] w-[50px] rounded-full dash2 "></div>
                             <div>James Spider</div>
@@ -26,7 +26,7 @@
                         <div class="flex">1 <div class="text-xs">Yesrs Of Exp</div>
                         </div>
                     </div>
-                    <div class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[97px] items-center">
+                    <div data-aos-once="false" data-aos-delay="150" data-aos="fade-left" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[97px] items-center">
                         <div class="flex gap-2 justify-center items-center">
                             <div class="h-[50px] w-[50px] rounded-full dash3 "></div>
                             <div>Alan Mike</div>
@@ -35,7 +35,7 @@
                         <div class="flex">7 <div class="text-xs">Yesrs Of Exp</div>
                         </div>
                     </div>
-                    <div
+                    <div data-aos-once="false" data-aos-delay="150" data-aos="fade-right"
                         class="h-[70px] w-[20rem] rounded-full border-[1px] border-[#2a2a2a]  flex justify-center gap-[100px] items-center">
                         See More
                     </div>
@@ -45,41 +45,41 @@
 
             <div class=" absolute left-[-25px] bottom-[-125px] h-[35rem]  w-[25rem]">
                 <div class="flex justify-center items-center pt-2">
-                    <div class="border-none bg-transparent w-[70%] mt-5"> Last Transactions</div>
+                    <div data-aos-once="false" data-aos-delay="180" data-aos="fade-right" class="border-none bg-transparent w-[70%] mt-5"> Last Transactions</div>
                     <div class="text-[#8c8c8c] outline-none"></div>
                 </div>
                 <div class="flex justify-center items-center flex-wrap gap-2 mt-2">
-                    <div class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="200" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Rayan Break</p>
                         <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash2"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $29.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">06:41PM</p>
                     </div>
-                    <div class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="220" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">James Spader</p>
                         <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash1"></div>
                         <p class="text-red-500 absolute top-10 left-2 font-semibold">- $74.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">09:22AM</p>
                     </div>
-                    <div class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="250" data-aos="fade-right" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Alan mike</p>
                         <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash3"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $12.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">11:35PM</p>
                     </div>
-                    <div class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="270" data-aos="fade-up" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Logan Ksi</p>
                         <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash4"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $137.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">07:41AM</p>
                     </div>
-                    <div class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="290" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Ariana Ronaldo</p>
                         <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash5"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $24.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">09:01PM</p>
                     </div>
-                    <div
+                    <div data-aos-once="false" data-aos-delay="300" data-aos="fade-up"
                         class="border-[1px] border-[#2a2a2a] flex-col h-[7rem] w-[8.5rem] rounded-2xl flex justify-center items-center relative">
                         <div class="text-[#8c8c8c]"></div>
                         <div class='font-semibold text-[#8c8c8c] text-sm'>View More</div>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="h-[100vh] w-[70vw] main-color-gradiant absolute right-0 top-0 rounded-l-[90px] ">
-                <div class="absolute top-7 left-5 text-[#717071]">
+                <div data-aos-once="false" data-aos-delay="350" data-aos="fade-down" class="absolute top-7 left-5 text-[#717071]">
                     <div class="bg-[#2a2a2a] h-[25rem] w-[43rem] rounded-2xl relative p-5 overflow-auto">
                         <h1 class="text-2xl absolute left-3 top-2 px-3 bg-[#2a2a2a] flex justify-center items-center py-1 rounded-full">
                             Our Users:
@@ -138,7 +138,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[28rem] absolute bottom-7 left-[20px] rounded-2xl p-5">
+                <div data-aos-once="false" data-aos-delay="450" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[28rem] absolute bottom-7 left-[20px] rounded-2xl p-5">
                     <h1 class="text-2xl font-bold mb-5 text-center text-white">
                         Weekly Earnings: $1,234
                     </h1>
@@ -208,7 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-[#2a2a2a] text-[#717071] h-[25rem]  w-[18rem] rounded-2xl absolute right-2 top-7 p-4">
+                <div data-aos-once="false" data-aos-delay="500" data-aos="fade-left" class="bg-[#2a2a2a] text-[#717071] h-[25rem]  w-[18rem] rounded-2xl absolute right-2 top-7 p-4">
                     <!-- Title Section -->
                     <h1 class="text-xl font-semibold text-white mb-3 text-center mr-[85px]">
                         Banned Users
@@ -260,7 +260,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[33rem] rounded-2xl absolute right-2 bottom-7 p-3">
+                <div data-aos-once="false" data-aos-delay="600" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[33rem] rounded-2xl absolute right-2 bottom-7 p-3">
                     <!-- Title Section -->
                     <h1 class="text-sm font-semibold text-white mb-3 text-center">
                         Trainer Requests

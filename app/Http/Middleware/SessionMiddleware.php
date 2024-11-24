@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\BuySession;
 use App\Models\Join;
 use App\Models\Sesin;
 use Closure;
@@ -21,7 +22,7 @@ class SessionMiddleware
         $session =$request->route('session') ;
         
        
-        if ( $user && Join::where('user_id',$user->id)->where('sesin_id',$session->id)->exists() || Sesin::where('user_id',$user->id)->exists() ) {
+        if ( $user && Join::where('user_id',$user->id)->where('sesin_id',$session->id)->exists() || Sesin::where('user_id',$user->id)->exists() || BuySession::where('user_id',$user->id)->where('sesin_id',$session->id)->exists()) {
             
             return $next($request);
         }

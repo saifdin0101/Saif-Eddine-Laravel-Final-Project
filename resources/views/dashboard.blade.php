@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="py-12 h-[100vh] relative">
-        <h1 class="text-3xl font-semibold absolute left-[6rem] main-text">Hey , {{ Auth::user()->name }} !!!</h1>
-        <div class="absolute top-[120px] left-[6rem]">
+        <h1 data-aos-once="false" data-aos-delay="100" data-aos="fade-right" class="text-3xl font-semibold absolute left-[6rem] main-text">Hey , {{ Auth::user()->name }} !!!</h1>
+        <div data-aos-once="false" data-aos-delay="120" data-aos="fade-left" class="absolute top-[120px] left-[6rem]">
             <div class="relative h-[60px] w-[28rem] border-b-2 border-[#0890b1] focus-within:border-[#40f9ff]">
                 <input type="text" placeholder="Search here..."
                     class="w-full pr-10 pl-4 py-3 border-none bg-transparent text-gray-800 text-lg placeholder-gray-400 focus:outline-none focus:placeholder-transparent">
@@ -12,9 +12,7 @@
         </div>
 
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 absolute right-2 top-7">
-
-
+        <div data-aos-once="false" data-aos-delay="230" data-aos="fade-up" class="max-w-7xl mx-auto sm:px-6 lg:px-8 absolute right-2 top-7">
             @php
                 $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                 $today = now()->format('l');
@@ -22,24 +20,21 @@
 
             <div
                 class="schedule-container bg-[#2a2a2a] text-white p-6 rounded-xl w-[30rem] h-[18rem] mx-auto relative shadow-lg">
-
                 <h1 class="text-center text-2xl font-bold mb-4 text-[#0890b1] uppercase tracking-wide">Weekly Activity</h1>
 
                 <p class="text-center text-sm text-gray-400 mb-6">Track your login streaks and stay consistent!</p>
-
 
                 <div class="flex justify-between items-end h-[130px] px-4">
                     @foreach ($days as $day)
                         @php
                             $isToday = $day === $today;
-                            $height = $day === 'Sunday' ? 0 : ($isToday ? rand(80, 120) : rand(10, 11));
+                            $height = $isToday ? 120 : rand(10, 10); 
                         @endphp
                         <div class="flex flex-col items-center group">
-
-                            <div class="w-6 {{ $day === 'Sunday' ? 'bg-gray-600' : 'second-color-gradiant' }} rounded-t-md transition-all group-hover:bg-[#067e9e] relative"
+                            <div class="w-6 {{ $isToday ? 'second-color-gradiant shadow-lg' : 'bg-gray-600' }} rounded-t-md transition-all group-hover:bg-[#067e9e] relative"
                                 style="height: {{ $height }}px;">
 
-                                @if ($isToday && $day !== 'Sunday')
+                                @if ($isToday)
                                     <span
                                         class="absolute -top-8 bg-[#067e9e] text-white text-xs py-1 px-2 rounded-md opacity-0 group-hover:opacity-100 transition duration-300 shadow-lg">
                                         Logged in today!
@@ -48,19 +43,19 @@
                             </div>
 
                             <span
-                                class="mt-2 text-xs {{ $isToday && $day !== 'Sunday' ? 'text-[#0890b1] font-semibold' : 'text-gray-400' }}">{{ $day }}</span>
+                                class="mt-2 text-xs {{ $isToday ? 'text-[#0890b1] font-semibold' : 'text-gray-400' }}">{{ $day }}</span>
                         </div>
                     @endforeach
                 </div>
-
 
                 <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
                     <p class="text-xs text-gray-400 italic">"Consistency is the key to success!"</p>
                 </div>
             </div>
         </div>
+
         {{-- invite your friend --}}
-        <div class="w-[16rem] cursor-pointer h-[15rem]  rounded-2xl absolute right-2  bottom-3">
+        <div data-aos-once="false" data-aos-delay="600" data-aos="fade-left" class="w-[16rem] cursor-pointer h-[15rem]  rounded-2xl absolute right-2  bottom-3">
             <div class="h-[90%] absolute top-[-10px] left-5 w-[90%] inv"></div>
             <button
                 class="flex items-center justify-center absolute bottom-[-5px]  right-2 w-12 h-12 bg-[#0890b1] hover:bg-[#40f9ff] text-white rounded-full shadow-lg transform hover:rotate-12 hover:scale-110 transition-all duration-300">
@@ -71,7 +66,7 @@
         </div>
 
         {{-- recomanded sessions --}}
-        <div class="bg-[#2a2a2a] h-[20rem] w-[35rem] absolute left-[6rem] top-[30vh] rounded-2xl flex">
+        <div data-aos-once="false" data-aos-delay="300" data-aos="fade-right" class="bg-[#2a2a2a] h-[20rem] w-[35rem] absolute left-[6rem] top-[30vh] rounded-2xl flex">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-50px] left-0">Recomanded Sessions</h1>
             <div class="w-[15%]  flex flex-col gap-8 text-2xl justify-center items-center text-[#067e9e]">
                 <div class="w-[60%] h-[3rem] bg-[#73bdd1] flex justify-center items-center rounded-xl"> <i
@@ -129,7 +124,7 @@
 
         </div>
         {{-- recomanded exercices --}}
-        <div class="flex gap-5 absolute bottom-11 left-[6rem] ">
+        <div data-aos-once="false" data-aos-delay="400" data-aos="fade-right" class="flex gap-5 absolute bottom-11 left-[6rem] ">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-67px] left-0">Fitness Goal</h1>
             @forelse ($twoexercices as $exercice)
                 <div class="bg-[#2a2a2a] h-[6rem] w-[17rem] relative rounded-2xl">
@@ -147,8 +142,8 @@
         </div>
         {{-- calories and wight --}}
         <div class="flex gap-5 absolute top-7 right-[37vw]">
-            <div class="bg-[#73bdd1] w-[7rem] h-[13rem] rounded-2xl relative">
-                <div
+            <div data-aos-once="false" data-aos-delay="180" data-aos="fade-up" class="bg-[#73bdd1] w-[7rem] h-[13rem] rounded-2xl relative">
+                <div 
                     class="w-[70%] h-[5rem] bg-[#222222] text-[#067e9e] rounded-xl flex justify-center items-center top-5 left-4 absolute  ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bi bi-fire " viewBox="0 0 16 16">
@@ -162,7 +157,7 @@
                 </div>
                 <i class="bottom-1 absolute left-9 text-gray-200">Gym</i>
             </div>
-            <div class="bg-[#73bdd1] w-[7rem] h-[13rem] rounded-2xl relative">
+            <div data-aos-once="false" data-aos-delay="180" data-aos="fade-down" class="bg-[#73bdd1] w-[7rem] h-[13rem] rounded-2xl relative">
                 <div
                     class="w-[70%] h-[5rem] bg-[#222222] text-[#067e9e] rounded-xl flex justify-center items-center top-5 left-4 absolute  ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -179,7 +174,7 @@
             </div>
         </div>
         {{-- recomanded trainers --}}
-        <div class="flex absolute bg-[#2a2a2a] rounded-2xl right-3 top-[42.5vh] gap-5 p-2 ">
+        <div  data-aos-once="false" data-aos-delay="350" data-aos="fade-left" class="flex absolute bg-[#2a2a2a] rounded-2xl right-3 top-[42.5vh] gap-5 p-2 ">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-50px] left-0">Popular Trainers</h1>
             @forelse ($treetrainers as $trainer)
                 <div class=" rounded-2xl text-white h-[13rem] w-[14rem] relative">
@@ -202,62 +197,65 @@
 
         </div>
         {{-- today activity --}}
-        <div class="bg-[#2a2a2a] h-[13rem] w-[30rem] rounded-2xl absolute bottom-3 right-[16rem] p-4">
+        <div data-aos-once="false" data-aos-delay="500" data-aos="fade-down" class="bg-[#2a2a2a] h-[13rem] w-[30rem] rounded-2xl absolute bottom-3 right-[16rem] p-4">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-35px] left-0">Today Activity</h1>
             <ul class="space-y-2 h-full">
-               
-                <li class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
-                    <i class="fa-solid fa-dumbbell text-[#40f9ff] text-lg"></i>
+
+                <li
+                    class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
+                    <i class="fa-solid fa-dumbbell text-[#067e9e] text-lg"></i>
                     <div class="text-gray-300 text-sm flex-1">
                         <span class="font-semibold">30 Push-ups</span>
                         <p class="text-xs text-gray-400">3 sets, warm-up first</p>
                     </div>
-               
-                    <button class="ml-2 p-1 text-[#40f9ff] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
+
+                    <button class="ml-2 p-1 text-[#067e9e] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
                         <i class="fa-solid fa-check-circle text-lg"></i>
                     </button>
                 </li>
-              
-                <li class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
-                    <i class="fa-solid fa-running text-[#40f9ff] text-lg"></i>
+
+                <li
+                    class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
+                    <i class="fa-solid fa-running text-[#067e9e] text-lg"></i>
                     <div class="text-gray-300 text-sm flex-1">
                         <span class="font-semibold">15-min Run</span>
                         <p class="text-xs text-gray-400">Treadmill or outdoors</p>
                     </div>
-                
-                    <button class="ml-2 p-1 text-[#40f9ff] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
+
+                    <button class="ml-2 p-1 text-[#067e9e] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
                         <i class="fa-solid fa-check-circle text-lg"></i>
                     </button>
                 </li>
-              
-                <li class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
-                    <i class="fa-solid fa-bicycle text-[#40f9ff] text-lg"></i>
+
+                <li
+                    class="flex items-center gap-3 bg-[#3a3a3a] p-2 rounded-lg transition-transform transform hover:scale-[1.03] hover:bg-[#404040]">
+                    <i class="fa-solid fa-bicycle text-[#067e9e] text-lg"></i>
                     <div class="text-gray-300 text-sm flex-1">
                         <span class="font-semibold">5-Mile Cycle</span>
                         <p class="text-xs text-gray-400">Stationary or road bike</p>
                     </div>
-                
-                    <button class="ml-2 p-1 text-[#40f9ff] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
+
+                    <button class="ml-2 p-1 text-[#067e9e] transition-all hover:text-[#0890b1]" onclick="markDone(this)">
                         <i class="fa-solid fa-check-circle text-lg"></i>
                     </button>
                 </li>
             </ul>
         </div>
-        
+
         <script>
             function markDone(button) {
                 const task = button.closest('li');
                 const title = task.querySelector('.font-semibold');
-                const icon = button.querySelector('i');  
-                
-               
+                const icon = button.querySelector('i');
+
+
                 title.classList.toggle('text-green-500');
                 icon.classList.toggle('text-green-500');
             }
         </script>
-        
-        
-        
+
+
+
 
     </div>
 @endsection
