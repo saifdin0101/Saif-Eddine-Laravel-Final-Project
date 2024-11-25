@@ -3,12 +3,14 @@
 @section('content')
     <div>
         <div class="100vw flex">
-            <div class="absolute text-5xl top-10 right-[22%] gradient-background text-center font-bold flex justify-center items-center"> Transform your fitness journey with <br> dynamic sessions</div>
+            <div
+                class="absolute text-5xl top-10 right-[22%] gradient-background text-center font-bold flex justify-center items-center">
+                Transform your fitness journey with <br> dynamic sessions</div>
             <!-- Sidebar space -->
             <div class="w-[20%]"></div>
 
             <!-- Main Content Area -->
-            <div class="w-full mt-[10rem] relative border-[7px] border-[#00aba3] pb-5   rounded-[40px] mr-5 px-5">
+            <div class="w-full mt-[10rem] relative border-[7px] border-[#0890b1] pb-5   rounded-[40px] mr-5 px-5">
                 @if (Auth::user()->role == 'trainer')
                     <div class="absolute right-10 top-[-25px]">
                         <button onclick="openModal('modelConfirm2')"
@@ -26,7 +28,10 @@
                             class="h-[25rem] ml-10 tilt-card shadow-lg hover:shadow-[#40f9ff]/50 w-[31.5rem] overflow-hidden rounded-3xl relative group transition-all duration-500 hover:shadow-2xl">
                             <img class="h-full w-full hover:scale-105 transition-transform duration-700 rounded-2xl"
                                 src="{{ asset('storage/images/' . $session->image) }}" alt="">
+                            <div class="text-4xl font-bold absolute bottom-5 right-5 text-[#0890b1]">
+                                {{ DB::table('joins')->where('sesin_id', $session->id)->count() }}/5
 
+                            </div>
 
                             <!-- Profile and Session Check -->
                             <div class="flex gap-5 absolute top-5 left-5">
@@ -44,16 +49,16 @@
                             <div
                                 class="h-[14rem] w-[13rem] absolute top-2 right-3 rounded-xl flex justify-center items-center flex-col gap-5 bg-white/30 backdrop-blur-lg shadow-lg group-hover:shadow-[#40f9ff]/50 transition-shadow">
                                 <div class="text-xs  text-gray-50">Date Time Of This Session</div>
-                                <div class="img6  text-white relative rounded-lg img6 h-[4rem] w-[12rem]">
+                                <div class="img2  text-white relative rounded-lg  h-[4rem] w-[12rem]">
                                     <div class="absolute bottom-2 right-2">
                                         <div class="text-xs font-semibold ">Starting at:</div>
-                                        <div class="text-sm font-semibold">{{ $session->start_time }}</div>
+                                        <div class=" font-semibold">{{ $session->start_time }}</div>
                                     </div>
                                 </div>
-                                <div class="img6 text-white relative rounded-lg img6 h-[4rem] w-[12rem]">
+                                <div class="img2 text-white relative rounded-lg  h-[4rem] w-[12rem]">
                                     <div class="absolute bottom-2 right-2">
                                         <div class="text-xs font-semibold">Ending at:</div>
-                                        <div class="text-sm font-semibold">{{ $session->end_time }}</div>
+                                        <div class=" font-semibold">{{ $session->end_time }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +85,7 @@
 
                             <!-- Session Info -->
                             <div class="flex flex-col gap-10 absolute bottom-10 left-5">
-                                <h1 class="text-3xl font-bold text-white">{{ $session->name }}</h1>
+                                <h1 class="text-3xl font-bold text-[#2b83a0]">{{ $session->name }}</h1>
                                 @if ($session->user_id == Auth::user()->id)
                                     <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[210px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
                                         href="{{ route('session.show', $session->id) }}">
@@ -90,50 +95,63 @@
                                         </div>
                                     </a>
                                 @else
-                                    @if (!$session->premium || $session->pay)
-                                        @if (Auth::user()->exerciceSesins->contains($session->id))
-                                            <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
-                                                href="{{ route('session.show', $session->id) }}">
-                                                Check Out Our Exercises
-                                                <div
-                                                    class="bg-white rounded-full px-1 text-black flex justify-center items-center">
-                                                    <i class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
-                                                </div>
-                                            </a>
-                                        @else
-                                            <form action="{{ route('session.join', $session->id) }}" method="POST">
-                                                @csrf
-                                                <button
-                                                    class="flex text-sm hover:bg-black duration-200 justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-7 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md">
-                                                    Join Us Now
+                                    @if (DB::table('joins')->where('sesin_id', $session->id)->count() >= 5)
+                                        <button
+                                            class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[120px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md">
+                                            Session Full
+                                            <div
+                                                class="bg-white rounded-full px-1 text-black flex justify-center items-center">
+
+                                            </div>
+                                        </button>
+                                    @else
+                                        @if (!$session->premium || $session->pay)
+                                            @if (Auth::user()->exerciceSesins->contains($session->id))
+                                                <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
+                                                    href="{{ route('session.show', $session->id) }}">
+                                                    Check Out Our Exercises
                                                     <div
                                                         class="bg-white rounded-full px-1 text-black flex justify-center items-center">
                                                         <i
                                                             class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
                                                     </div>
-                                                </button>
-                                            </form>
-                                        @endif
-                                    @else
-                                        @if (in_array($session->id, $payedSessions))
-                                            <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
-                                                href="{{ route('session.show', $session->id) }}">
-                                                Check Out Our Exercises
-                                                <div
-                                                    class="bg-white rounded-full px-1 text-black flex justify-center items-center">
-                                                    <i class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            @else
+                                                <form action="{{ route('session.join', $session->id) }}" method="POST">
+                                                    @csrf
+                                                    <button
+                                                        class="flex text-sm hover:bg-black duration-200 justify-center items-center hover:scale-105 transition-transform h-[40px] w-[150px] rounded-full gap-7 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md">
+                                                        Join Us Now
+                                                        <div
+                                                            class="bg-white rounded-full px-1 text-black flex justify-center items-center">
+                                                            <i
+                                                                class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
+                                                        </div>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         @else
-                                            <form method="post" action="{{ route('session.checkout') }}">
-                                                @csrf
-                                                <input name="sesin_id" value="{{ $session->id }}" type="hidden">
-                                                <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
-                                                <button
-                                                    class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
-                                                    Buy The Session
-                                                </button>
-                                            </form>
+                                            @if (in_array($session->id, $payedSessions))
+                                                <a class="flex text-sm justify-center items-center hover:scale-105 transition-transform h-[40px] w-[220px] hover:bg-black duration-200 rounded-full gap-5 hover:text-[#40f9ff] bg-white/30 backdrop-blur-md text-white shadow-md"
+                                                    href="{{ route('session.show', $session->id) }}">
+                                                    Check Out Our Exercises
+                                                    <div
+                                                        class="bg-white rounded-full px-1 text-black flex justify-center items-center">
+                                                        <i
+                                                            class="bi bi-chevron-right text-[#40f9ff] text-xl pb-[5px] px-1"></i>
+                                                    </div>
+                                                </a>
+                                            @else
+                                                <form method="post" action="{{ route('session.checkout') }}">
+                                                    @csrf
+                                                    <input name="sesin_id" value="{{ $session->id }}" type="hidden">
+                                                    <input name="user_id" value="{{ Auth::user()->id }}" type="hidden">
+                                                    <button
+                                                        class="bg-[#00e0d4] text-white py-3 px-6 rounded-full hover:bg-teal-400 transition duration-300">
+                                                        Buy The Session
+                                                    </button>
+                                                </form>
+                                            @endif
                                         @endif
                                     @endif
                                 @endif

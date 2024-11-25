@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BuySession;
 use App\Models\Exercice;
+use App\Models\Join;
 use App\Models\Sesin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-
+        
         $sessions = Sesin::where('approve', true)->get();
         $user = Auth::user();
         $payedSessions = $user->sessions()->wherePivot('pay', true)->select('sesins.id')->pluck('id')->toArray();
@@ -40,7 +41,7 @@ class SessionController extends Controller
             return [
                 "start" => $e->start_time,
                 "end" => $e->end_time,
-                "color" => "#40f9ff",
+                "color" => "#0890b1",
                 "passed" => false,
                 "title" => $e->name,
             ];
@@ -189,32 +190,32 @@ class SessionController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Sesin $session)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'start_time' => 'required|date',
-        'end_time' => 'required|date',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-    $imageName = $session->image; // Keep the current image by default
+        $imageName = $session->image; // Keep the current image by default
 
-    // Check if a new image is uploaded
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
-        $image->move(storage_path('app/public/images'), $imageName);
+        // Check if a new image is uploaded
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = hash('sha256', file_get_contents($image)) . '.' . $image->getClientOriginalExtension();
+            $image->move(storage_path('app/public/images'), $imageName);
+        }
+
+        $session->update([
+            'name' => $request->name,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'image' => $imageName,
+        ]);
+
+        return redirect()->route('session.index')->with('success', 'Session updated successfully!');
     }
-
-    $session->update([
-        'name' => $request->name,
-        'start_time' => $request->start_time,
-        'end_time' => $request->end_time,
-        'image' => $imageName,
-    ]);
-
-    return redirect()->route('session.index')->with('success', 'Session updated successfully!');
-}
 
 
     /**
@@ -224,7 +225,7 @@ class SessionController extends Controller
     {
         //
         $session->delete();
-        return back()->with('success','Session been deleted Successfully');
+        return back()->with('success', 'Session been deleted Successfully');
     }
     public function joinSession(Request $request, Sesin $session)
     {
@@ -236,6 +237,13 @@ class SessionController extends Controller
             return redirect()->back()->with('error', 'You are already part of this session.');
         }
 
+        $count = Join::where('sesin_id', $session->id)->count();
+        
+        if ($count >= 5) {
+            return back()->with('error', 'This session is fully booked');
+        }
+
+       
 
         $user->exerciceSesins()->attach($session->id);
 

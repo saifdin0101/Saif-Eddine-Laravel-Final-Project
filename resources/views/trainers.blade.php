@@ -26,14 +26,14 @@
                                 <button onclick="openModal('modelConfirm')"
                                     class="relative px-10 py-3 search-bar hover:bg-[#40f9ff] hover:duration-500 hover:text-black font-semibold text-white rounded-full">
                                     {{ Auth::user()->approve ? 'Complete Your Payment' : 'Apply to Become a Trainer' }}
-                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">Take the
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#0890b1] left-5">Take the
                                         next step in your fitness journey!</div>
                                 </button>
                             @else
                                 <button disabled
                                     class="relative px-10 py-3 search-bar bg-gray-500  font-semibold text-white rounded-full">
                                     Welcome, Trainer {{ Auth::user()->name }}
-                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#40f9ff] left-5">You have
+                                    <div class="absolute text-xs top-[-10px] bg-[#1e1e1e] text-[#0890b1] left-5">You have
                                         full access as a trainer !</div>
                                 </button>
                             @endif

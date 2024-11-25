@@ -64,10 +64,10 @@
                             </div>
                             <!-- Footer -->
                             <div class="bg-gray-900 p-4 text-center">
-                                <button
-                                    class="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
+                                <a href="{{ route('profile.edit') }}"
+                                    class="bg-cyan-500 hover:bg-cyan-600 flex justify-center items-center text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
                                     Update Info
-                                </button>
+                                </a>
                             </div>
                         </div>
                         

@@ -353,7 +353,7 @@
 }
 .search-bar {
   background-color: #1f1f1f; 
-  border: 2px solid #00e0d4;
+  border: 2px solid #0890b1;
 }
 
 .search-bar:focus {
@@ -382,11 +382,11 @@ color: #05a59d;
 
 ::-webkit-scrollbar-track {
   background: linear-gradient(to bottom, #000000, #004040, #00e0d4);
-  box-shadow: 0 0 10px #00e0d4; /* Subtle glow effect */
+  box-shadow: 0 0 10px #0890b1; /* Subtle glow effect */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #00e0d4, #008080, #002222);
+  background: linear-gradient(to bottom, #0890b1, #ffffff, );
   border-radius: 10px;
 }
 .main-color-gradiant{
@@ -398,7 +398,7 @@ background: linear-gradient(0deg, rgba(8,144,177,1) 0%, rgba(0,0,0,1) 100%);
 background: linear-gradient(0deg, rgba(8,144,177,1) 0%, rgb(101, 200, 247) 100%);
 }
 scrollbar-width: thin;
-scrollbar-color: #00e0d4 #002222; 
+scrollbar-color: #0890b1 #0890b1; 
 .file-upload-container {
   position: relative;
 }
