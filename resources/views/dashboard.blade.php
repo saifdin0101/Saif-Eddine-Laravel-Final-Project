@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="py-12 h-[100vh] relative">
-        <h1 data-aos-once="false" data-aos-delay="100" data-aos="fade-right" class="text-3xl font-semibold absolute left-[6rem] main-text">Hey , {{ Auth::user()->name }} !!!</h1>
-        <div data-aos-once="false" data-aos-delay="120" data-aos="fade-left" class="absolute top-[120px] left-[6rem]">
+        <h1 data-aos-once="false" data-aos-delay="100" data-aos="fade-right" class="text-3xl font-semibold absolute left-[8rem] top-3 main-text">Hey , {{ Auth::user()->name }} !!!</h1>
+        <div data-aos-once="false" data-aos-delay="120" data-aos="fade-left" class="absolute top-[70px] left-[8rem]">
             <div class="relative h-[60px] w-[28rem] border-b-2 border-[#0890b1] focus-within:border-[#40f9ff]">
                 <input type="text" placeholder="Search here..."
                     class="w-full pr-10 pl-4 py-3 border-none bg-transparent text-gray-800 text-lg placeholder-gray-400 focus:outline-none focus:placeholder-transparent">
@@ -12,14 +12,14 @@
         </div>
 
 
-        <div data-aos-once="false" data-aos-delay="230" data-aos="fade-up" class="max-w-7xl mx-auto sm:px-6 lg:px-8 absolute right-2 top-7">
+        <div data-aos-once="false" data-aos-delay="230" data-aos="fade-up" class="max-w-7xl mx-auto sm:px-6 lg:px-8 absolute right-2 top-1">
             @php
                 $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                 $today = now()->format('l');
             @endphp
 
             <div
-                class="schedule-container bg-[#2a2a2a] text-white p-6 rounded-xl w-[30rem] h-[18rem] mx-auto relative shadow-lg">
+                class="schedule-container bg-[#2a2a2a] text-white p-6 rounded-xl w-[30rem] h-[17rem] mx-auto relative shadow-lg">
                 <h1 class="text-center text-2xl font-bold mb-4 text-[#0890b1] uppercase tracking-wide">Weekly Activity</h1>
 
                 <p class="text-center text-sm text-gray-400 mb-6">Track your login streaks and stay consistent!</p>
@@ -66,7 +66,7 @@
         </div>
 
         {{-- recomanded sessions --}}
-        <div data-aos-once="false" data-aos-delay="300" data-aos="fade-right" class="bg-[#2a2a2a] h-[20rem] w-[35rem] absolute left-[6rem] top-[30vh] rounded-2xl flex">
+        <div data-aos-once="false" data-aos-delay="300" data-aos="fade-right" class="bg-[#2a2a2a] h-[20rem] w-[35rem] absolute left-[8rem] top-[28vh] rounded-2xl flex">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-50px] left-0">Recomanded Sessions</h1>
             <div class="w-[15%]  flex flex-col gap-8 text-2xl justify-center items-center text-[#067e9e]">
                 <div class="w-[60%] h-[3rem] bg-[#73bdd1] flex justify-center items-center rounded-xl"> <i
@@ -124,7 +124,7 @@
 
         </div>
         {{-- recomanded exercices --}}
-        <div data-aos-once="false" data-aos-delay="400" data-aos="fade-right" class="flex gap-5 absolute bottom-11 left-[6rem] ">
+        <div data-aos-once="false" data-aos-delay="400" data-aos="fade-right" class="flex gap-5 absolute bottom-11 left-[8rem] ">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-67px] left-0">Fitness Goal</h1>
             @forelse ($twoexercices as $exercice)
                 <div class="bg-[#2a2a2a] h-[6rem] w-[17rem] relative rounded-2xl">
@@ -141,7 +141,7 @@
             {{-- <div class="bg-[#2a2a2a] h-[7rem] w-[17rem] rounded-2xl"></div> --}}
         </div>
         {{-- calories and wight --}}
-        <div class="flex gap-5 absolute top-7 right-[37vw]">
+        <div class="flex gap-5 absolute top-1 right-[37vw]">
             <div data-aos-once="false" data-aos-delay="180" data-aos="fade-up" class="bg-[#73bdd1] w-[7rem] h-[13rem] rounded-2xl relative">
                 <div 
                     class="w-[70%] h-[5rem] bg-[#222222] text-[#067e9e] rounded-xl flex justify-center items-center top-5 left-4 absolute  ">
@@ -174,10 +174,10 @@
             </div>
         </div>
         {{-- recomanded trainers --}}
-        <div  data-aos-once="false" data-aos-delay="350" data-aos="fade-left" class="flex absolute bg-[#2a2a2a] rounded-2xl right-3 top-[42.5vh] gap-5 p-2 ">
+        <div  data-aos-once="false" data-aos-delay="350" data-aos="fade-left" class="flex absolute bg-[#2a2a2a] rounded-2xl right-7 top-[38.5vh] gap-5 p-2 ">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-50px] left-0">Popular Trainers</h1>
             @forelse ($treetrainers as $trainer)
-                <div class=" rounded-2xl text-white h-[13rem] w-[14rem] relative">
+                <div class=" rounded-2xl text-white h-[11rem] w-[15rem] relative">
                     <img class="w-full h-full rounded-2xl opacity-70 bg-black"
                         src="{{ asset('storage/images/' . $trainer->image) }}" alt="">
                     <div class="absolute left-5 top-5 text-xl font-semibold text-white">{{ $trainer->name }}</div>
@@ -197,7 +197,7 @@
 
         </div>
         {{-- today activity --}}
-        <div data-aos-once="false" data-aos-delay="500" data-aos="fade-down" class="bg-[#2a2a2a] h-[13rem] w-[30rem] rounded-2xl absolute bottom-3 right-[16rem] p-4">
+        <div data-aos-once="false" data-aos-delay="500" data-aos="fade-down" class="bg-[#2a2a2a] h-[13rem] w-[30rem] rounded-2xl absolute bottom-3 right-[20rem] p-4">
             <h1 class="text-2xl text-gray-300 absolute font-semibold top-[-35px] left-0">Today Activity</h1>
             <ul class="space-y-2 h-full">
 

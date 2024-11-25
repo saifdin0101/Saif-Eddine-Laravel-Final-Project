@@ -7,28 +7,28 @@
             <div class=" h-[25rem] w-[25rem] relative flex  justify-center items-center">
                 <h1 data-aos-once="false" data-aos-delay="50" data-aos="fade-right" class="text-2xl absolute left-7 top-10 ">Our News Trainers</h1>
 
-                <div  class="flex flex-col gap-2 text-[#717071] absolute left-[10px] bottom-0">
-                    <div data-aos-once="false" data-aos-delay="100" data-aos="fade-left" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[90px] items-center">
+                <div  class="flex flex-col gap-2 text-[#717071] absolute left-[10px] bottom-[50px]">
+                    <div data-aos-once="false" data-aos-delay="100" data-aos="fade-left" class="h-[60px] w-[20rem] rounded-lg bg-[#2a2a2a] flex justify-center gap-[90px] items-center">
                         <div class="flex gap-2 justify-center items-center">
-                            <div class="h-[50px] w-[50px] rounded-full dash1 "></div>
+                            <div class="h-[50px] w-[50px] rounded-lg dash1 "></div>
                             <div>Rayn Break</div>
                         </div>
 
                         <div class="flex">3 <div class="text-xs">Yesrs Of Exp</div>
                         </div>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="130" data-aos="fade-right" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[80px] items-center">
+                    <div data-aos-once="false" data-aos-delay="130" data-aos="fade-right" class="h-[60px] w-[20rem] rounded-lg bg-[#2a2a2a] flex justify-center gap-[80px] items-center">
                         <div class="flex gap-2 justify-center items-center">
-                            <div class="h-[50px] w-[50px] rounded-full dash2 "></div>
+                            <div class="h-[50px] w-[50px] rounded-lg dash2 "></div>
                             <div>James Spider</div>
                         </div>
 
                         <div class="flex">1 <div class="text-xs">Yesrs Of Exp</div>
                         </div>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="150" data-aos="fade-left" class="h-[70px] w-[20rem] rounded-full bg-[#2a2a2a] flex justify-center gap-[97px] items-center">
+                    <div data-aos-once="false" data-aos-delay="150" data-aos="fade-left" class="h-[60px] w-[20rem] rounded-lg bg-[#2a2a2a] flex justify-center gap-[97px] items-center">
                         <div class="flex gap-2 justify-center items-center">
-                            <div class="h-[50px] w-[50px] rounded-full dash3 "></div>
+                            <div class="h-[50px] w-[50px] rounded-lg dash3 "></div>
                             <div>Alan Mike</div>
                         </div>
 
@@ -36,60 +36,60 @@
                         </div>
                     </div>
                     <div data-aos-once="false" data-aos-delay="150" data-aos="fade-right"
-                        class="h-[70px] w-[20rem] rounded-full border-[1px] border-[#2a2a2a]  flex justify-center gap-[100px] items-center">
+                        class="h-[60px] w-[20rem] rounded-lg border-[1px] border-[#2a2a2a]  flex justify-center gap-[100px] items-center">
                         See More
                     </div>
 
                 </div>
             </div>
 
-            <div class=" absolute left-[-25px] bottom-[-125px] h-[35rem]  w-[25rem]">
+            <div class=" absolute left-[-25px] bottom-[-150px] h-[35rem]  w-[25rem]">
                 <div class="flex justify-center items-center pt-2">
                     <div data-aos-once="false" data-aos-delay="180" data-aos="fade-right" class="border-none bg-transparent w-[70%] mt-5"> Last Transactions</div>
                     <div class="text-[#8c8c8c] outline-none"></div>
                 </div>
                 <div class="flex justify-center items-center flex-wrap gap-2 mt-2">
-                    <div data-aos-once="false" data-aos-delay="200" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="200" data-aos="fade-down" class="bg-[#2a2a2a] h-[6rem] w-[8.5rem] rounded-lg relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Rayan Break</p>
-                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash2"></div>
+                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-lg dash2"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $29.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">06:41PM</p>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="220" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="220" data-aos="fade-down" class="bg-[#2a2a2a] h-[6rem] w-[8.5rem] rounded-lg relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">James Spader</p>
-                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash1"></div>
+                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-lg dash1"></div>
                         <p class="text-red-500 absolute top-10 left-2 font-semibold">- $74.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">09:22AM</p>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="250" data-aos="fade-right" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="250" data-aos="fade-right" class="bg-[#2a2a2a] h-[6rem] w-[8.5rem] rounded-lg relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Alan mike</p>
-                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash3"></div>
+                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-lg dash3"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $12.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">11:35PM</p>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="270" data-aos="fade-up" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="270" data-aos="fade-up" class="bg-[#2a2a2a] h-[6rem] w-[8.5rem] rounded-lg relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Logan Ksi</p>
-                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash4"></div>
+                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-lg dash4"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $137.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">07:41AM</p>
                     </div>
-                    <div data-aos-once="false" data-aos-delay="290" data-aos="fade-down" class="bg-[#2a2a2a] h-[7rem] w-[8.5rem] rounded-2xl relative">
+                    <div data-aos-once="false" data-aos-delay="290" data-aos="fade-down" class="bg-[#2a2a2a] h-[6rem] w-[8.5rem] rounded-lg relative">
                         <p class="text-xs absolute top-5 left-2 text-[#7b7b7b] text-semibold">Ariana Ronaldo</p>
-                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-full dash5"></div>
+                        <div class="h-[25px] absolute top-4 right-2 w-[25px] rounded-lg dash5"></div>
                         <p class="text-green-500 absolute top-10 left-2 font-semibold">+ $24.00</p>
                         <p class="absolute top-16 text-[#7b7b7b] text-xs left-3 text-semibold">09:01PM</p>
                     </div>
                     <div data-aos-once="false" data-aos-delay="300" data-aos="fade-up"
-                        class="border-[1px] border-[#2a2a2a] flex-col h-[7rem] w-[8.5rem] rounded-2xl flex justify-center items-center relative">
+                        class="border-[1px] border-[#2a2a2a] flex-col h-[6rem] w-[8.5rem] rounded-lg flex justify-center items-center relative">
                         <div class="text-[#8c8c8c]"></div>
                         <div class='font-semibold text-[#8c8c8c] text-sm'>View More</div>
                     </div>
                 </div>
             </div>
             <div class="h-[100vh] w-[70vw] main-color-gradiant absolute right-0 top-0 rounded-l-[90px] ">
-                <div data-aos-once="false" data-aos-delay="350" data-aos="fade-down" class="absolute top-7 left-5 text-[#717071]">
-                    <div class="bg-[#2a2a2a] h-[25rem] w-[43rem] rounded-2xl relative p-5 overflow-auto">
-                        <h1 class="text-2xl absolute left-3 top-2 px-3 bg-[#2a2a2a] flex justify-center items-center py-1 rounded-full">
+                <div data-aos-once="false" data-aos-delay="350" data-aos="fade-down" class="absolute top-8 left-5 text-[#717071]">
+                    <div class="bg-[#2a2a2a] h-[20rem] w-[43rem] rounded-lg relative p-5 overflow-auto">
+                        <h1 class="text-2xl absolute left-3 top-2 px-3 bg-[#2a2a2a] flex justify-center items-center py-1 rounded-lg">
                             Our Users:
                         </h1>
                         <table class="min-w-full table-auto text-sm text-left text-gray-600 mt-10">
@@ -106,14 +106,14 @@
                                 @forelse ($users as $user)
                                     <tr class="hover:bg-[#f1f1f1] transition duration-300">
                                         <td class="px-4 py-2">
-                                            <img class="h-[40px] w-[40px] rounded-full object-cover"
+                                            <img class="h-[40px] w-[40px] rounded-lg object-cover"
                                                 src="{{ asset('storage/images/' . $user->image) }}" alt="User Image">
                                         </td>
                                         <td class="px-4 py-2 text-white">{{ $user->name }}</td>
                                         <td class="px-4 py-2 font-semibold">{{ $user->email }}</td>
                                         <td class="px-4 py-2">
                                             <span
-                                                class="inline-block py-1 px-3 rounded-full  
+                                                class="inline-block py-1 px-3 rounded-lg  
                                                 {{ $user->role == 'trainer' ? 'bg-[#088cad] text-white' : 'bg-gray-100 text-black ' }}">
                                                 {{ ucfirst($user->role) }}
                                             </span>
@@ -123,7 +123,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button
-                                                    class="bg-[#be4a4add] text-white py-2 px-4 rounded-full hover:bg-red-600 transition duration-300">
+                                                    class="bg-[#be4a4add] text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
                                                     Delete
                                                 </button>
                                             </form>
@@ -138,7 +138,7 @@
                         </table>
                     </div>
                 </div>
-                <div data-aos-once="false" data-aos-delay="450" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[28rem] absolute bottom-7 left-[20px] rounded-2xl p-5">
+                <div data-aos-once="false" data-aos-delay="450" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[21rem] w-[28rem] absolute bottom-7 left-[20px] rounded-lg p-5">
                     <h1 class="text-2xl font-bold mb-5 text-center text-white">
                         Weekly Earnings: $1,234
                     </h1>
@@ -208,12 +208,12 @@
                         </div>
                     </div>
                 </div>
-                <div data-aos-once="false" data-aos-delay="500" data-aos="fade-left" class="bg-[#2a2a2a] text-[#717071] h-[25rem]  w-[18rem] rounded-2xl absolute right-2 top-7 p-4">
+                <div data-aos-once="false" data-aos-delay="500" data-aos="fade-left" class="bg-[#2a2a2a] text-[#717071] h-[25rem]  w-[21rem] rounded-lg absolute right-2 top-7 p-4">
                     <!-- Title Section -->
                     <h1 class="text-xl font-semibold text-white mb-3 text-center mr-[85px]">
                         Banned Users
                         <!-- Counter Badge -->
-                        <span class="bg-[#be4a4add] text-white text-sm py-1 px-3 rounded-full ml-2">
+                        <span class="bg-[#be4a4add] text-white text-sm py-1 px-3 rounded-lg ml-2">
                             {{ count($deletedUsers) }}
                         </span>
                     </h1>
@@ -234,7 +234,7 @@
                                 <tr class="hover:bg-[#f1f1f1] transition duration-300">
                                     <!-- User Image -->
                                     <td class="px-4 py-2">
-                                        <img class="h-[40px] w-[40px] rounded-full object-cover"
+                                        <img class="h-[40px] w-[40px] rounded-lg object-cover"
                                             src="{{ asset('storage/images/' . $user->image) }}" alt="User Image">
                                     </td>
                                     <!-- User Name -->
@@ -246,7 +246,7 @@
                                         <form action="{{ route('user.restore', $user->id) }}" method="POST">
                                             @csrf
                                             <button
-                                                class="bg-[#58c7af] text-white py-2 px-4 rounded-full hover:bg-teal-400 transition duration-300">
+                                                class="bg-[#58c7af] text-white py-2 px-4 rounded-lg hover:bg-teal-400 transition duration-300">
                                                 Restore
                                             </button>
                                         </form>
@@ -260,7 +260,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div data-aos-once="false" data-aos-delay="600" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[23rem] w-[33rem] rounded-2xl absolute right-2 bottom-7 p-3">
+                <div data-aos-once="false" data-aos-delay="600" data-aos="fade-up" class="bg-[#2a2a2a] text-[#717071] h-[16rem] w-[36rem] rounded-lg absolute right-2 bottom-7 p-3">
                     <!-- Title Section -->
                     <h1 class="text-sm font-semibold text-white mb-3 text-center">
                         Trainer Requests
@@ -283,20 +283,20 @@
                                 <tr class="hover:bg-[#f1f1f1] transition duration-300">
                                     <!-- Image -->
                                     <td class="px-2 py-2">
-                                        <img class="h-[30px] w-[30px] rounded-full object-cover" src="{{ asset('storage/images/' . $request->user->image) }}" alt="User Image">
+                                        <img class="h-[30px] w-[30px] rounded-lg object-cover" src="{{ asset('storage/images/' . $request->user->image) }}" alt="User Image">
                                     </td>
                                     <!-- Name with clickable icon for details -->
                                     <td class="px-2 py-2 flex items-center space-x-1">
                                         <span class="text-[12px]">{{ $request->user->name }}</span>
                                         <button 
-                                            class="bg-gradient-to-r from-[#00e0d4] to-[#078eae] text-white px-1 py-1 rounded-full hover:shadow-lg transition-all duration-200 text-[10px]"
+                                            class="bg-gradient-to-r from-[#00e0d4] to-[#078eae] text-white px-1 py-1 rounded-lg hover:shadow-lg transition-all duration-200 text-[10px]"
                                             onclick="toggleDetails({{ $request->user->id }})">
                                             View Details
                                         </button>
                                     </td>
                                     <!-- Payment Status -->
                                     <td class="px-2 py-2 text-xs">
-                                        <span class="inline-block py-0.5 px-1 rounded-full
+                                        <span class="inline-block py-0.5 px-1 rounded-lg
                                             {{ $request->payment ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">
                                             {{ $request->payment ? 'Payment Received' : 'No Payment' }}
                                         </span>
@@ -306,7 +306,7 @@
                                         <form method="POST" action="/admin/update/{{ $request->user->id }}">
                                             @csrf
                                             @method('PUT')
-                                            <button class="bg-[#00e0d4] text-white py-1 px-2 rounded-full hover:bg-teal-400 transition duration-200 text-[12px]">
+                                            <button class="bg-[#00e0d4] text-white py-1 px-2 rounded-lg hover:bg-teal-400 transition duration-200 text-[12px]">
                                                 {{ $request->user->role == 'client' ? 'Accept Request' : 'Remove Role' }}
                                             </button>
                                         </form>
@@ -322,7 +322,7 @@
                         <div id="request-details-content">
                             <!-- Details will be dynamically inserted here -->
                         </div>
-                        <button onclick="closeDetails()" class="mt-3 bg-red-500 text-white py-1 px-3 rounded-full hover:bg-red-600 transition duration-200 text-xs">
+                        <button onclick="closeDetails()" class="mt-3 bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600 transition duration-200 text-xs">
                             Close
                         </button>
                     </div>
@@ -403,14 +403,14 @@
                         @forelse ($users as $user)
                             <tr class="hover:bg-[#f1f1f1] transition duration-300">
                                 <td class="px-4 py-2">
-                                    <img class="h-[40px] w-[40px] rounded-full object-cover"
+                                    <img class="h-[40px] w-[40px] rounded-lg object-cover"
                                         src="{{ asset('storage/images/' . $user->image) }}" alt="User Image">
                                 </td>
                                 <td class="px-4 py-2">{{ $user->name }}</td>
                                 <td class="px-4 py-2">{{ $user->email }}</td>
                                 <td class="px-4 py-2">
                                     <span
-                                        class="inline-block py-1 px-3 rounded-full  
+                                        class="inline-block py-1 px-3 rounded-lg  
                                         {{ $user->role == 'trainer' ? 'bg-purple-500 text-white' : 'bg-gray-100 text-black ' }}">
                                         {{ ucfirst($user->role) }}
                                     </span>
@@ -424,7 +424,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            class="bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 transition duration-300">
+                                            class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
                                             Delete
                                         </button>
                                     </form>
@@ -456,14 +456,14 @@
                         @forelse ($deletedUsers as $user)
                             <tr class="hover:bg-[#f1f1f1] transition duration-300">
                                 <td class="px-4 py-2">
-                                    <img class="h-[40px] w-[40px] rounded-full object-cover"
+                                    <img class="h-[40px] w-[40px] rounded-lg object-cover"
                                         src="{{ asset('storage/images/' . $user->image) }}" alt="User Image">
                                 </td>
                                 <td class="px-4 py-2">{{ $user->name }}</td>
                                 <td class="px-4 py-2">{{ $user->email }}</td>
                                 <td class="px-4 py-2">
                                     <span
-                                        class="inline-block py-1 px-3 rounded-full text-white 
+                                        class="inline-block py-1 px-3 rounded-lg text-white 
                                         {{ $user->role == 'admin' ? 'bg-red-500' : 'bg-red-500' }}">
                                         {{ ucfirst($user->deleted_at) }}
                                     </span>
@@ -473,7 +473,7 @@
                                     <form action="{{ route('user.restore', $user->id) }}" method="POST">
                                         @csrf
                                         <button
-                                            class="bg-green-500 text-white py-2 px-4 rounded-full hover:bg-teal-400 transition duration-300">
+                                            class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-teal-400 transition duration-300">
                                             Restore User
                                         </button>
                                     </form>
@@ -519,14 +519,14 @@
                                 <td class="px-4 py-2">{{ $request->urself }}</td>
                                 <td class="px-4 py-2">
                                     <span
-                                        class="inline-block py-1 px-3 rounded-full
+                                        class="inline-block py-1 px-3 rounded-lg
                                         {{ $request->payment ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">
                                         {{ $request->payment ? 'Payment Received' : 'No Payment' }}
                                     </span>
                                 </td>
                                 <td class="px-4 py-2">
                                     <span
-                                        class="inline-block py-1 px-3 rounded-full
+                                        class="inline-block py-1 px-3 rounded-lg
                                         {{ $request->user->role == 'trainer' ? 'bg-purple-500 text-white' : 'bg-gray-100 text-black' }}">
                                         {{ ucfirst($request->user->role) }}
                                     </span>
@@ -536,7 +536,7 @@
                                         @csrf
                                         @method('PUT')
                                         <button
-                                            class="bg-[#00e0d4] text-white py-2 px-4 rounded-full hover:bg-teal-400 transition duration-300">
+                                            class="bg-[#00e0d4] text-white py-2 px-4 rounded-lg hover:bg-teal-400 transition duration-300">
                                             {{ $request->user->role == 'client' ? 'Accept Request' : 'Remove Role' }}
                                         </button>
                                     </form>
