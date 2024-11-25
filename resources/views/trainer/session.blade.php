@@ -3,6 +3,7 @@
 @section('content')
     <div>
         <div class="100vw flex">
+            <div class="absolute text-4xl top-10 right-[24%] gradient-background text-center font-bold flex justify-center items-center"> Transform your fitness journey with <br> dynamic sessions</div>
             <!-- Sidebar space -->
             <div class="w-[20%]"></div>
 
