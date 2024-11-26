@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <div class="100vw flex">
-            <div class="w-[30%] "></div>
+            <div class="w-[10%] "></div>
             <div class="w-full text-blue-50 relative mt-[10rem]">
                 <div class="absolute right-10">
                     @if (Auth::user()->role == 'trainer' && $session->user_id == Auth::user()->id)
