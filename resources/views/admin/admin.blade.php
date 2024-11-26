@@ -14,7 +14,7 @@
                             <div>Rayn Break</div>
                         </div>
 
-                        <div class="flex">3 <div class="text-xs">Yesrs Of Exp</div>
+                        <div class="flex">3 <div class="text-xs">Years Of Exp</div>
                         </div>
                     </div>
                     <div data-aos-once="false" data-aos-delay="130" data-aos="fade-right" class="h-[60px] w-[20rem] rounded-lg bg-[#2a2a2a] flex justify-center gap-[80px] items-center">
@@ -23,7 +23,7 @@
                             <div>James Spider</div>
                         </div>
 
-                        <div class="flex">1 <div class="text-xs">Yesrs Of Exp</div>
+                        <div class="flex">1 <div class="text-xs">Years Of Exp</div>
                         </div>
                     </div>
                     <div data-aos-once="false" data-aos-delay="150" data-aos="fade-left" class="h-[60px] w-[20rem] rounded-lg bg-[#2a2a2a] flex justify-center gap-[97px] items-center">
@@ -32,7 +32,7 @@
                             <div>Alan Mike</div>
                         </div>
 
-                        <div class="flex">7 <div class="text-xs">Yesrs Of Exp</div>
+                        <div class="flex">7 <div class="text-xs">Years Of Exp</div>
                         </div>
                     </div>
                     <div data-aos-once="false" data-aos-delay="150" data-aos="fade-right"

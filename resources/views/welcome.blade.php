@@ -131,18 +131,18 @@
     <div id="news" class="h-[110vh]  w-full flex justify-center items-center">
         <div class=" flex flex-col gap-5 h-[100vh] w-[80%]">
             <div class="h-[40%]  flex gap-5">
-                <div class=" h-full  w-[20rem]">
+                <div class=" h-[10rem]  w-[20rem] ">
                     <div data-aos-once="false" data-aos-delay="200" data-aos="fade-up"
                         class=" h-full shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)]">
-                        <div class="h-[40%] w-full  overflow-hidden">
+                        <div class="h-[100%] w-full  overflow-hidden">
 
                             <div class="w-full h-full object-cover img1 transition-transform duration-500 hover:scale-110">
                             </div>
 
                         </div>
-                        <div class="h-[13.5rem] bg-white flex justify-center  flex-col gap-10">
-                            <div class="ml-10 font-bold text-[#00e0d4] uppercase">our facilities</div>
-                            <div class="ml-10 font-bold text-xl text-black uppercase">Modern equipment, spacious studios,
+                        <div class="h-[7.5rem] bg-white flex-sm justify-center  flex-col gap-8">
+                            <div class="ml-10 font-bold text-[#00e0d4] pt-3 uppercase">our facilities</div>
+                            <div class="ml-10 text-[#585b63] text-sm ">Modern equipment, spacious studios,
                                 personal training, and luxurious amenities.</div>
                         </div>
                     </div>
@@ -290,10 +290,10 @@
 
 
 
-    <div id="contact" class="w-full h-[60vh]  flex justify-center items-center flex-col gap-10">
+    <div id="contact" class="w-full h-[60vh] py-5  flex justify-center items-center flex-col gap-10">
         <h1 class="text-4xl text-[#00e0d4]">Contact & Help</h1>
         <div class="flex  justify-center items-center flex-col gap-5 w-full h-[80%] ">
-            <div class="flex gap-5">
+            <div class="flex gap-8">
                 <input data-aos-once="false" data-aos-delay="200" data-aos="fade-right" placeholder="Type Your Email"
                     class="h-[3.5rem] rounded-lg border-2 border-[#00e0d4] w-[30rem] pl-5" type="text">
                 <input data-aos-once="false" data-aos-delay="400" data-aos="fade-left"
