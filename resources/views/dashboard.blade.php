@@ -88,7 +88,7 @@
                         @forelse ($forsessions as $session)
                             <tr class="hover:bg-[#40f9ff]/20">
                                 <!-- Session Name -->
-                                <td class="py-3 px-4 text-white font-semibold">
+                                <td class="py-2 px-4 text-white font-semibold">
                                     {{ $session->name }}
                                     <!-- Created At with Time -->
                                     <div class="text-sm text-gray-400 mt-3"> <!-- Added more space here -->
