@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex justify-center items-center ">
                     <div
-                        class=" border-2  border-white shaddow w-[94%] rounded-xl flex justify-center items-center flex-col gap-5">
+                        class=" border-[#0890b0] border-2 shaddow w-[94%] rounded-xl flex justify-center items-center flex-col gap-5">
 
                         <div class="flex justify-center items-center  mt-5  gap-10  ">
 

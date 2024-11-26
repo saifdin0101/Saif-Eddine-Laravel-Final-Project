@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="min-h-screen bg-gradient-to-r from-black via-gray-900 to-gray-800 py-12 px-6">
+    <div class="min-h-screen bg-transparent py-12 px-6">
 
         <div class="max-w-7xl mx-auto flex space-x-8">
 
@@ -9,7 +9,7 @@
             <div class="w-64 bg-transparent"></div>
 
             <!-- Main Content Area -->
-            <div class="flex-1 bg-transparent p-8 rounded-xl shadow-2xl border-t-4 border-teal-400 space-y-12">
+            <div class="flex-1 bg-gradient-to-r from-black via-gray-900 to-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-teal-400 space-y-12">
 
                 <!-- User Information Section -->
                 <div class="space-y-12">

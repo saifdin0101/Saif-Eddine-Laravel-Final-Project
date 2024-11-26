@@ -177,12 +177,56 @@
                 @csrf
 
                 <div class="space-y-4">
-                    <div>
+                    <div class="mb-4">
                         <label for="image" class="block text-white font-medium mb-2">Exercise Image</label>
-                        <input name="image" type="file"
-                            class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00e0d4]  text-gray-900 transition duration-300">
+                        <div class="relative">
+                            <input type="file" name="image" id="image" class="hidden" accept="image/*">
+                            <label for="image" class="block w-full h-40 bg-white border border-gray-300 rounded-lg shadow-sm cursor-pointer hover:bg-gray-50 focus-within:outline-none focus-within:ring-2 focus-within:ring-[#00e0d4] focus-within:border-transparent transition duration-300 overflow-hidden">
+                                <div id="image-preview" class="w-full h-full flex items-center justify-center bg-cover bg-center bg-no-repeat">
+                                    <div class="flex flex-col items-center justify-center w-full h-full bg-white bg-opacity-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        <span id="file-label" class="text-sm font-medium text-gray-600">Choose an image</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-
+                    
+                    <script>
+                    document.getElementById('image').addEventListener('change', function(e) {
+                        const file = e.target.files[0];
+                        const preview = document.getElementById('image-preview');
+                        const fileLabel = document.getElementById('file-label');
+                    
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                preview.style.backgroundImage = `url('${e.target.result}')`;
+                                preview.innerHTML = ''; // Clear the content
+                                fileLabel.textContent = file.name;
+                                // Add the file name as an overlay
+                                preview.insertAdjacentHTML('beforeend', `
+                                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm truncate">
+                                        ${file.name}
+                                    </div>
+                                `);
+                            }
+                            reader.readAsDataURL(file);
+                        } else {
+                            preview.style.backgroundImage = 'none';
+                            preview.innerHTML = `
+                                <div class="flex flex-col items-center justify-center w-full h-full bg-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span id="file-label" class="text-sm font-medium text-gray-600">Choose an image</span>
+                                </div>
+                            `;
+                        }
+                    });
+                    </script>
 
                     <div>
                         <label for="name" class="block text-white font-medium mb-2">Exercise Name</label>

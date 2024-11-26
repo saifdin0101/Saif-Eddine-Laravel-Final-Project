@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sesin;
 use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -108,12 +109,18 @@ class TrainerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id , User $trainer)
-    {
-        //compact('trainer')
-        
-        return view('trainer.trainerShow',compact('trainer'));
-    }
+    public function show(string $id)
+{
+
+    $trainer = User::where('id', $id)->where('role', 'trainer')->first();
+   
+
+    $thetrainerSessions = Sesin::where('user_id', $trainer->id)->get();
+
+
+    return view('trainer.trainerShow', compact('trainer', 'thetrainerSessions'));
+}
+
 
     /**
      * Show the form for editing the specified resource.

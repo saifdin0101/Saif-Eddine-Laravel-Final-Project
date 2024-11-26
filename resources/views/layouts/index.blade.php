@@ -25,43 +25,44 @@
 
 <body class="bg-[#1e1e1e] roboto overflow-x-hidden">
     @if (session('success'))
-    <div class="alert-container" id="alert-success">
-        <div class="alert-content bg-green-500 text-white">
-            <i class="bi bi-check-circle alert-icon"></i>
-            <div>{{ session('success') }}</div>
-            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-success')">&times;</button>
+        <div class="alert-container" id="alert-success">
+            <div class="alert-content bg-green-500 text-white">
+                <i class="bi bi-check-circle alert-icon"></i>
+                <div>{{ session('success') }}</div>
+                <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-success')">&times;</button>
+            </div>
+            <div class="alert-progress">
+                <div class="alert-progress-bar bg-green-700"></div>
+            </div>
         </div>
-        <div class="alert-progress">
-            <div class="alert-progress-bar bg-green-700"></div>
-        </div>
-    </div>
-@endif
+    @endif
 
-@if (session('warning'))
-    <div class="alert-container" id="alert-warning">
-        <div class="alert-content bg-yellow-500 text-white">
-            <i class="bi bi-exclamation-triangle alert-icon"></i>
-            <div>{{ session('warning') }}</div>
-            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-warning')">&times;</button>
+    @if (session('warning'))
+        <div class="alert-container" id="alert-warning">
+            <div class="alert-content bg-yellow-500 text-white">
+                <i class="bi bi-exclamation-triangle alert-icon"></i>
+                <div>{{ session('warning') }}</div>
+                <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-warning')">&times;</button>
+            </div>
+            <div class="alert-progress">
+                <div class="alert-progress-bar bg-yellow-700"></div>
+            </div>
         </div>
-        <div class="alert-progress">
-            <div class="alert-progress-bar bg-yellow-700"></div>
-        </div>
-    </div>
-@endif
+    @endif
 
-@if (session('error'))
-    <div class="alert-container" id="alert-error">
-        <div class="alert-content bg-red-500 text-white">
-            <i class="bi bi-x-circle alert-icon"></i>
-            <div>{{ session('error') }}</div>
-            <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-error')">&times;</button>
+    @if (session('error'))
+        <div class="alert-container" id="alert-error">
+            <div class="alert-content bg-red-500 text-white">
+                <i class="bi bi-x-circle alert-icon"></i>
+                <div>{{ session('error') }}</div>
+                <button class="closee ml-auto cursor-pointer" onclick="dismissAlert('alert-error')">&times;</button>
+            </div>
+            <div class="alert-progress">
+                <div class="alert-progress-bar bg-red-700"></div>
+            </div>
         </div>
-        <div class="alert-progress">
-            <div class="alert-progress-bar bg-red-700"></div>
-        </div>
-    </div>
-@endif
+    @endif
+
 
     @auth
 
@@ -179,6 +180,33 @@
                             x-transition:leave-end="opacity-0"
                             class="whitespace-nowrap absolute left-[5rem] top-[17rem]">Settings</span>
                     </a>
+                    <button id="darkModeToggle"
+                        class="flex items-center rounded-lg px-3 py-3 text-base font-medium h-[50px] justify-center transition-colors duration-200"
+                        :class="{ 'justify-center': !expanded }">
+                        <!-- Dark Mode Icon (Half Moon) -->
+                        <svg id="darkIcon" xmlns="http://www.w3.org/2000/svg"
+                            class="h-7 w-7 flex-shrink-0 absolute left-5 top-[21rem]" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <!-- Light Mode Icon (Sun) -->
+                        <svg id="lightIcon" xmlns="http://www.w3.org/2000/svg"
+                            class="h-7 w-7 flex-shrink-0 absolute left-5 top-[21rem] hidden" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span x-show="expanded" x-transition:enter="transition ease-out duration-300 delay-150"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0"
+                            class="whitespace-nowrap absolute left-[5rem] top-[21rem]">Dark Mode</span>
+                    </button>
+                    {{-- <button id="darkModeToggle"
+                        class="px-4 py-2 text-sm font-medium rounded-lg border border-[#00e0d4] text-[#00e0d4] hover:bg-[#00e0d4] hover:text-black transition duration-300">
+                        Toggle Dark Mode
+                    </button> --}}
                 </nav>
 
                 <div class="p-4 space-y-4">
@@ -256,6 +284,22 @@
                 easing: 'ease',
                 once: true,
             });
+        });
+    </script>
+    <script>
+        const toggleButton = document.getElementById('darkModeToggle');
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('bg-[#1e1e1e]'); 
+            body.classList.toggle('bg-white'); 
+            body.classList.toggle('text-white'); 
+            body.classList.toggle('text-black'); 
+
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
         });
     </script>
 </body>
